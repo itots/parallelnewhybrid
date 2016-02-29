@@ -1,0 +1,26 @@
+Package: parallelnewhybrid
+Type: Package
+Title: Parralelization of NewHybrids (Anderson XXXX) and Rapid Creation of
+    Simulated Hybrid Datasets
+Version: 0.0.0.9001
+Date: 2016-02-25
+Author: Brendan F. Wringe
+Maintainer: Brendan Wringe <bwringe@gmail.com>
+Author@R: c(person("Brendan", "Wringe", email = "bwringe@gmail.com", role =
+    c("aut", "cre"), person("Nick", "Jeffries", role = "ctb"))
+Description: This function takes advantage of the parallel processing ability
+    inherent in multicore computers to distribute iterations of NewHybrids analyses
+    across the available cores, and repopulate the cores with new analyses as the
+    tasks complete. Also included in this package is the ability to rapidly create
+    simulated multi-generational hybrid datasets (Pure1, Pure2, F1, F2, BC1, BC2;
+    Anderson XXXX) to test the accuracy of NewHybrids assignments.
+License: GPL
+LazyData: TRUE
+Depends:
+    R (>= 3.1.0)
+Imports:
+    parallel,
+    plyr,
+    reshape2,
+    stringr
+RoxygenNote: 5.0.1
