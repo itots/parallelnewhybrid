@@ -69,15 +69,23 @@ Example datasets have been provided as R images (.rda files). These can be loade
 
 **Parameter** | **Description**
 ------------|----------  
-*GenePopData*| test  
-*pop.groups*|test
-*outputName*|test ; default = NULL
-*sample.size*|test ; default = 200
-*NumSims*|test ; default = 1
-*NumReps*|test ; default = 1
+*GenePopData*| GenePop formatted file containing genotypes from two (2) ancestral populations. This is the data from which the simulated hybrids will be constructed  
+*pop.groups*|An optional character vector denoting how the two ancestral populations should be named; default is PopA and PopB
+*outputName*|An optioanal character vector to be applied as the name of the output. The default is NULL, in which case the output name is constructed from the name of the input, with the suffix *\_SiRj_NH* added where *i* is the number of *S*imulations corresponding to the output, and *j* is the number of *R*eplicates of the *ith* simulation. NH refers to the fact that the output is in NewHybrids format.  
+*sample.size*|test ; an integer number of simulated individuals to be created for each of the six hybrid classes (e.g. 200 * each of Pure1, Pure2, F1, F2, BC1 and BC2 = 1200 total simulated individuals). Default is 200  
+*NumSims*|An integer number of simulated datasets to be created. Default is 1  
+*NumReps*|An integer number of replicates to be created for each of the *i* simulated datasets specified in NumSims. Default is 1  
+
+***  
+
+####nh_zcore  
 
 
+**Parameter** | **Description**
+------------|----------  
+*GetstheZdir*| A file path to the folder in which the NewHybrids formatted files to be appended reside
+*multiapplyZvec*| **IF** *a single Zvec is to be applied to each NewHybrids format file*, use *multiapplyZvec*. Zvec will added in batch fashion to every NewHybrids format file within a working folder. *multiapplyZvec* must be specified as a file path + file name (e.g. "~/HoldenUniversity/CoolEthansComputer/HairDolls/Zvexxx.csv")
+*applyuniqueZvec*| **IF** *each NewHybrids format file is to be given a UNIQUE vector of Zvecs* use *applyuniqueZvec*. **NOTE**: to apply UNIQUE Zvecs, the Zvec files must all be placed in a single folder separate from the NewHybrids files *AND* they MUST follow the file name convention "NHFileName_Zvec.csv" where NHFileName is the same name as the file to which the Zvec is to be applied. Consequently, the number of NewHybrids files = number of Zvec files. *applyuniqueZvec* must be specified as a file path to the folder in which the Zvec files reside (e.g. "~/HarrisonUniversity/DEANGordonPritchard/LettersOfRecommendation/")  
 
-function(GenePopData, pop.groups = c("PopA", "PopB"), outputName = NULL, sample.size = 200, NumSims = 1, NumReps = 1)
 
 

@@ -223,31 +223,56 @@ $(document).ready(function () {
 <tbody>
 <tr class="odd">
 <td align="left"><em>GenePopData</em></td>
-<td align="left">test</td>
+<td align="left">GenePop formatted file containing genotypes from two (2) ancestral populations. This is the data from which the simulated hybrids will be constructed</td>
 </tr>
 <tr class="even">
 <td align="left"><em>pop.groups</em></td>
-<td align="left">test</td>
+<td align="left">An optional character vector denoting how the two ancestral populations should be named; default is PopA and PopB</td>
 </tr>
 <tr class="odd">
 <td align="left"><em>outputName</em></td>
-<td align="left">test ; default = NULL</td>
+<td align="left">An optioanal character vector to be applied as the name of the output. The default is NULL, in which case the output name is constructed from the name of the input, with the suffix <em>_SiRj_NH</em> added where <em>i</em> is the number of <em>S</em>imulations corresponding to the output, and <em>j</em> is the number of <em>R</em>eplicates of the <em>ith</em> simulation. NH refers to the fact that the output is in NewHybrids format.</td>
 </tr>
 <tr class="even">
 <td align="left"><em>sample.size</em></td>
-<td align="left">test ; default = 200</td>
+<td align="left">test ; an integer number of simulated individuals to be created for each of the six hybrid classes (e.g. 200 * each of Pure1, Pure2, F1, F2, BC1 and BC2 = 1200 total simulated individuals). Default is 200</td>
 </tr>
 <tr class="odd">
 <td align="left"><em>NumSims</em></td>
-<td align="left">test ; default = 1</td>
+<td align="left">An integer number of simulated datasets to be created. Default is 1</td>
 </tr>
 <tr class="even">
 <td align="left"><em>NumReps</em></td>
-<td align="left">test ; default = 1</td>
+<td align="left">An integer number of replicates to be created for each of the <em>i</em> simulated datasets specified in NumSims. Default is 1</td>
 </tr>
 </tbody>
 </table>
-<p>function(GenePopData, pop.groups = c(“PopA”, “PopB”), outputName = NULL, sample.size = 200, NumSims = 1, NumReps = 1)</p>
+<hr />
+</div>
+<div id="nh_zcore" class="section level4">
+<h4>nh_zcore</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>Parameter</strong></th>
+<th align="left"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><em>GetstheZdir</em></td>
+<td align="left">A file path to the folder in which the NewHybrids formatted files to be appended reside</td>
+</tr>
+<tr class="even">
+<td align="left"><em>multiapplyZvec</em></td>
+<td align="left"><strong>IF</strong> <em>a single Zvec is to be applied to each NewHybrids format file</em>, use <em>multiapplyZvec</em>. Zvec will added in batch fashion to every NewHybrids format file within a working folder. <em>multiapplyZvec</em> must be specified as a file path + file name (e.g. “~/HoldenUniversity/CoolEthansComputer/HairDolls/Zvexxx.csv”)</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>applyuniqueZvec</em></td>
+<td align="left"><strong>IF</strong> <em>each NewHybrids format file is to be given a UNIQUE vector of Zvecs</em> use <em>applyuniqueZvec</em>. <strong>NOTE</strong>: to apply UNIQUE Zvecs, the Zvec files must all be placed in a single folder separate from the NewHybrids files <em>AND</em> they MUST follow the file name convention “NHFileName_Zvec.csv” where NHFileName is the same name as the file to which the Zvec is to be applied. Consequently, the number of NewHybrids files = number of Zvec files. <em>applyuniqueZvec</em> must be specified as a file path to the folder in which the Zvec files reside (e.g. “~/HarrisonUniversity/DEANGordonPritchard/LettersOfRecommendation/”)</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 
