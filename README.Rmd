@@ -1,12 +1,5 @@
----
-title: "parallelnewhybrid"
-author: "Brendan Wringe"
-date: "March 1, 2016"
-output: html_document
----
-
 ### ***parallelnewhybrid*** is an R package designed to parallelize NewHybrids analyses, and can also rapidly create multi-generation simulated hybrid datasets
-
+***
 
 
 
@@ -17,7 +10,7 @@ output: html_document
 **parallelnh_xx.R**| Iteratively assigns NewHybrids analyses to the *c* available cores in a computer.
 **nh_zcore.R**| Inserts genotype category assignments to NewHybrids format files (see Anderson XXXX)
 **freqbasedsim.R**| Creates simulated hybrid datasets comprised of *two pure parental groups*, *F1*, *F2*, and *backcrosses to both parentals*
-
+***
 ###Package Installation
 *devtools* must be installed prior to installing **parallelnh**  
 With *devtools* installed, **parallelenh** can be installed using the command
@@ -25,7 +18,7 @@ With *devtools* installed, **parallelenh** can be installed using the command
 devtools::install_git("bwringe/parallelnewhybrid")
 ```
 **Note**: **parallelnh** relies on functions from the packages *parallel*, *plyr*, *stringr*, and *tidyr*. The user should ensure these installed prior to installing **parallelnh**
-
+***
 ###Function descriptions
 ####parallelnh_xx.R
 Allows NewHybrids (Anderson XXXX) to be run in parallel. It does so by creating a vector of file names to be run, then assigns a job to each of the *c* cores available in the computer. As each task finishes, a new analysis is asigned to the idled core.  
@@ -48,6 +41,43 @@ For information on the known genotype categories, refer to the NewHybrids docume
 ####freqbasedsim.R
 This function generates simulated, centred Pure1, Pure2, F1, F2, BC1 and BC2 offspring based on the genotype frequencies of two ancestral populations provided in a GENEPOP [link](http://genepop.curtin.edu.au/) formatted file. The user can specify how many simulated files to create, how many individuals to simulate, and how many replicate files to create.  
 
+***  
 
+###How to use:  
+####Example datasets:  
+Example datasets have been provided as R images (.rda files). These can be loaded into your workspace using the ``data()`` function  
+
+**Example dataset** | **Contents**  
+------------|----------  
+*PurePops* | A *GENEPOP* format file containing the genotypes at 240 SNP loci for 60 individuals in each of two ancestral populations (PopA and PopB). This is the data format for **freqbasedsim**, and as such the file can be entered into this function directly.
+*SimPops\_S1R1_NH* | A *NewHybrids* format file. This file is the result of running **freqbasedsim** using the default parameters on the *PurePops* dataset. *SimPops\_S1R1_NH* can be analyzed using the function **parallelnh_xx**.
+*Zed\_vec* | A two column dataset of Zeds to be inserted into the dataset *SimPops\_S1R1_NH* using the function **nh_zcore**
+
+***  
+####parallelnh_xx  
+
+**Parameter** | **Description**
+------------|----------  
+*folder.data*| A file path to the folder in which the NewHybrids formatted files to be analyzed reside.   
+*where.NH* | A file path to the NewHybrids installation folder
+*burnin* | An integer specifying how many burnin steps NewHybrids is to run
+*sweeps* | An integer specifying how many sweep steps NewHybrids is to run  
+
+***  
+
+####freqbasedsim  
+
+**Parameter** | **Description**
+------------|----------  
+*GenePopData*| test  
+*pop.groups*|test
+*outputName*|test ; default = NULL
+*sample.size*|test ; default = 200
+*NumSims*|test ; default = 1
+*NumReps*|test ; default = 1
+
+
+
+function(GenePopData, pop.groups = c("PopA", "PopB"), outputName = NULL, sample.size = 200, NumSims = 1, NumReps = 1)
 
 
