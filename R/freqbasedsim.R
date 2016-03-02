@@ -433,7 +433,7 @@ pop.names <- c(pure.name.recall, "F1.out", "F2.out", BC.name.recall)
 popvecout <- NULL
 for(i in 1:length(pop.names)){
 
-  pvecmake <- paste0(pop.names[i], "_", c(1:nrow(temp.hold)))
+  pvecmake <- paste0(pop.names[i], "_", c(1:nrow(get(pop.names[i]))))
 
   popvecout <- c(popvecout, pvecmake)
 
