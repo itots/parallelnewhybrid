@@ -450,7 +450,7 @@ sim.out[ ,1] <- c(1:nrow(sim.out))
 Loci.sim <- do.call(paste, c(data.frame(sim.out[,]), sep = " "))
 cd2 <- paste(ColumnData, collapse = " ")
 
-insertNumIndivs <- paste("NumIndvs", NumIndivs)
+insertNumIndivs <- paste("NumIndivs", NumIndivs)
 insertNumLoci <- paste("NumLoci", NumLoci)
 insertYourDigits <- "Digits 3"
 insertFormat <- "Format Lumped"
