@@ -17,9 +17,9 @@ nh_zcore <- function(GetstheZdir, multiapplyZvec=NULL, applyuniqueZvec=NULL){
 
 ## make sure that both multiapplyZvec and applyuniqueZvec haven't both been called
 
-if((length(multiapplyZvec) >0 ) && length(applyuniqueZvec) > 0){
-  stop("One or the other bud. You can have multiapplyZvec, or applyuniqueZvec. You aren't a two-year-old at their birthday, so don't get greedy")
-}
+  if((length(multiapplyZvec) >0 ) && length(applyuniqueZvec) > 0){
+    stop("One or the other bud. You can have multiapplyZvec, or applyuniqueZvec. You aren't a two-year-old at their birthday, so don't get greedy")
+    } # End if statement
 
 
 ## files to be converted should all be in a single folder

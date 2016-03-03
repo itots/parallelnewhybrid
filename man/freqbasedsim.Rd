@@ -8,9 +8,9 @@ freqbasedsim(GenePopData, pop.groups = c("PopA", "PopB"), outputName = NULL,
   sample.size = 200, NumSims = 1, NumReps = 1)
 }
 \arguments{
-\item{GenePopData}{GenePop formatted file containing genotypes from two (2) ancestral populations. This is the data from which the simulated hybrids will be constructed}
+\item{GenePopData}{file path to a GenePop formatted file containing genotypes from two (2) ancestral populations. This is the data from which the simulated hybrids will be constructed}
 
-\item{pop.groups}{character vector denoting how the two ancestral populations should be named; default is PopA and PopB}
+\item{pop.groups}{Optional character vector denoting how the two ancestral populations should be named; default is PopA and PopB}
 
 \item{outputName}{an optioanal character vector to be applied as the name of the output. The default is NULL, in which case the output name is constructed from the name of the input, with the suffix _SiRj_NH added where i is the number of simulations corresponding to the output, and j is the number of replicates of the ith simulation. NH refers to the fact that the output is in NewHybrids format}
 
