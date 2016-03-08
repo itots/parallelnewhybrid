@@ -137,6 +137,14 @@ $(document).ready(function () {
 <td align="left"><strong>freqbasedsim.R</strong></td>
 <td align="left">Creates simulated hybrid datasets comprised of <em>two pure parental groups</em>, <em>F1</em>, <em>F2</em>, and <em>backcrosses to both parentals</em></td>
 </tr>
+<tr class="even">
+<td align="left"><strong>freqbasedsim_Advanced.R</strong></td>
+<td align="left">Creates simulated hybrid datasets comprised of <em>two pure parental groups</em>, <em>F1</em>, <em>F2</em>, and <em>backcrosses to both parentals</em>. Allows the number of individuals of each genotype frequency category output to be specified by the user.</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>freqbasedsim_UB.R</strong></td>
+<td align="left">Creates simulated hybrid datasets comprised of <em>two pure parental groups</em>, <em>F1</em>, <em>F2</em>, and <em>backcrosses to both parentals</em>. A less biased version of the simulation function which allows the user the specify the proportion of individuals in each of the two ancestral populations to be used to generate the allele frequencies upon which to base the simulations. Also allows the number of individuals of each genotype frequency category output to be specified by the user.</td>
+</tr>
 </tbody>
 </table>
 <hr />
@@ -257,11 +265,123 @@ $(document).ready(function () {
 </tr>
 <tr class="odd">
 <td align="left"><em>outputName</em></td>
-<td align="left">An optioanal character vector to be applied as the name of the output. The default is NULL, in which case the output name is constructed from the name of the input, with the suffix <em>_SiRj_NH</em> added where <em>i</em> is the number of <em>S</em>imulations corresponding to the output, and <em>j</em> is the number of <em>R</em>eplicates of the <em>ith</em> simulation. NH refers to the fact that the output is in NewHybrids format.</td>
+<td align="left">An optional character vector to be applied as the name of the output. The default is NULL, in which case the output name is constructed from the name of the input, with the suffix <em>_SiRj_NH</em> added where <em>i</em> is the number of <em>S</em>imulations corresponding to the output, and <em>j</em> is the number of <em>R</em>eplicates of the <em>ith</em> simulation. NH refers to the fact that the output is in NewHybrids format.</td>
 </tr>
 <tr class="even">
 <td align="left"><em>sample.size</em></td>
-<td align="left">test ; an integer number of simulated individuals to be created for each of the six hybrid classes (e.g. 200 * each of Pure1, Pure2, F1, F2, BC1 and BC2 = 1200 total simulated individuals). Default is 200</td>
+<td align="left">An optional integer to specify the number of simulated individuals to be created for each of the six hybrid classes (e.g. 200 * each of Pure1, Pure2, F1, F2, BC1 and BC2 = 1200 total simulated individuals). Default is 200</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>NumSims</em></td>
+<td align="left">An integer number of simulated datasets to be created. Default is 1</td>
+</tr>
+<tr class="even">
+<td align="left"><em>NumReps</em></td>
+<td align="left">An integer number of replicates to be created for each of the <em>i</em> simulated datasets specified in NumSims. Default is 1</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="freqbasedsim_advanced" class="section level4">
+<h4>freqbasedsim_Advanced</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>Parameter</strong></th>
+<th align="left"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><em>GenePopData</em></td>
+<td align="left">GenePop formatted file containing genotypes from two (2) ancestral populations. This is the data from which the simulated hybrids will be constructed</td>
+</tr>
+<tr class="even">
+<td align="left"><em>pop.groups</em></td>
+<td align="left">An optional character vector denoting how the two ancestral populations should be named; default is PopA and PopB</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>outputName</em></td>
+<td align="left">An optioanal character vector to be applied as the name of the output. The default is NULL, in which case the output name is constructed from the name of the input, with the suffix <em>_SiRj_NH</em> added where <em>i</em> is the number of <em>S</em>imulations corresponding to the output, and <em>j</em> is the number of <em>R</em>eplicates of the <em>ith</em> simulation. NH refers to the fact that the output is in NewHybrids format.</td>
+</tr>
+<tr class="even">
+<td align="left"><em>sample.sizePure</em></td>
+<td align="left">An optional integer to specify the number of simulated Pure1 and Pure2 individuals (centred ancestral populations) to be created. Default is 200</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>sample.sizeF1</em></td>
+<td align="left">An optional integer to specify the number of simulated F1 individuals (Pure1 X Pure2) to be created. Default is 200</td>
+</tr>
+<tr class="even">
+<td align="left"><em>sample.sizeF2</em></td>
+<td align="left">An optional integer to specify the number of simulated F2 dividuals (F1 X F1) to be created. Default is 200</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>sample.sizeBC</em></td>
+<td align="left">An optional integer to specify the number of simulated Back Cross1 and BackCross2 individuals (Pure1 X F1 and Pure2XF2) to be created. Default is 200</td>
+</tr>
+<tr class="even">
+<td align="left"><em>NumSims</em></td>
+<td align="left">An integer number of simulated datasets to be created. Default is 1</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>NumReps</em></td>
+<td align="left">An integer number of replicates to be created for each of the <em>i</em> simulated datasets specified in NumSims. Default is 1</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="freqbasedsim_ub" class="section level4">
+<h4>freqbasedsim_UB</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>Parameter</strong></th>
+<th align="left"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><em>GenePopData</em></td>
+<td align="left">GenePop formatted file containing genotypes from two (2) ancestral populations. This is the data from which the simulated hybrids will be constructed</td>
+</tr>
+<tr class="even">
+<td align="left"><em>pop.groups</em></td>
+<td align="left">An optional character vector denoting how the two ancestral populations should be named. Default is PopA and PopB</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>prop.sample</em></td>
+<td align="left">The proportion of individuals in both ancestral PopA and PopB to sample to create the simulated hybrids (Pure1, Pure2, F1, F2, BC1, and BC2)</td>
+</tr>
+<tr class="even">
+<td align="left"><em>outputName</em></td>
+<td align="left">An optioanal character vector to be applied as the name of the output. The default is NULL, in which case the output name is constructed from the name of the input, with the suffix <em>_SiRj_NH</em> added where <em>i</em> is the number of <em>S</em>imulations corresponding to the output, and <em>j</em> is the number of <em>R</em>eplicates of the <em>ith</em> simulation. NH refers to the fact that the output is in NewHybrids format.</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>sample.sizePure1</em></td>
+<td align="left">An optional integer to specify the number of simulated Pure1 individuals (centred ancestral PopA) to be output when the desired number is less than the number of individuals in Ancestral Population 1 * prop.sample. The default is NULL, where the number output = number of individuals in Ancestral Population 1 * prop.sample. If a number greater than number of individuals in Ancestral Population 1 * prop.sample is requested, the number of individuals in Ancestral Population 1 * prop.sample are output.</td>
+</tr>
+<tr class="even">
+<td align="left"><em>sample.sizePure2</em></td>
+<td align="left">An optional integer to specify the number of simulated Pure2 individuals (centred ancestral PopB) to be output when the desired number is less than the number of individuals in Ancestral Population 2 * prop.sample. The default is NULL, where the number output = number of individuals in Ancestral Population 2 * prop.sample. If a number greater than number of individuals in Ancestral Population 2 * prop.sample is requested, the number of individuals in Ancestral Population 2 * prop.sample are output.</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>sample.sizeF1</em></td>
+<td align="left">An optional integer to specify the number of F1 individuals to be output when the desired number of simulated F1 individuals is less than (number of individuals in Ancestral PopA + number of individuals in Ancestral PopB) * prop.sample. The default is NULL where the number returned = (number of individuals in Ancestral PopA + number of individuals in Ancestral PopB) * prop.sample. Unless sample.sizeF1 is explicitly stated, even when sample.sizePure1 and sample.sizePure2 are specified, the number of simulated F1 individuals returned will be equal to (number of individuals in Ancestral PopA + number of individuals in Ancestral PopB) * prop.sample.</td>
+</tr>
+<tr class="even">
+<td align="left"><em>sample.sizeF2</em></td>
+<td align="left">An optional integer to specify the number of simulated F2 individuals to be output when the desired number of simulated F2 individuals is less than (number of individuals in Ancestral PopA + number of individuals in Ancestral PopB) * prop.sample. The default is NULL where the number returned = (number of individuals in Ancestral PopA + number of individuals in Ancestral PopB) * prop.sample. Unless sample.sizeF2 is explicitly stated, even when sample.sizePure1 and sample.sizePure2 are specified, the number of simulated F2 individuals returned will be equal to (number of individuals in Ancestral PopA + number of individuals in Ancestral PopB) * prop.sample.</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>sample.sizeBC1</em></td>
+<td align="left">An optional integer to specify the number of simulated BC1 (PopA X F1) individuals to be output when the desired number of simulated BC1 individuals is less than the number of individuals in Ancestral PopA * prop.sample. The default is NULL where the number returned = number of individuals in Ancestral PopA * prop.sample. Unless sample.sizeBC1 is explicitly stated, even when sample.sizePure1 and sample.sizeF1 are specified, the number of simulated BC1 individuals returned will be equal to number of individuals in Ancestral PopA * prop.sample.</td>
+</tr>
+<tr class="even">
+<td align="left"><em>sample.sizeBC2</em></td>
+<td align="left">An optional integer to specify the number of simulated BC2 (PopB X F1) individuals to be output when the desired number of simulated BC2 individuals is less than the number of individuals in Ancestral PopB * prop.sample. The default is NULL where the number returned = number of individuals in Ancestral PopB * prop.sample. Unless sample.sizeBC2 is explicitly stated, even when sample.sizePure2 and sample.sizeF1 are specified, the number of simulated BC2 individuals returned will be equal to number of individuals in Ancestral PopB * prop.sample.</td>
 </tr>
 <tr class="odd">
 <td align="left"><em>NumSims</em></td>
