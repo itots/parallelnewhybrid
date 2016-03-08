@@ -464,7 +464,7 @@ freqbasedsim_Advanced <- function(GenePopData, pop.groups = c("PopA", "PopB"), o
 
         Loci.out <- c(insertNumIndivs, insertNumLoci, insertYourDigits, insertFormat, insertLociName,   Loci.sim)
 
-        outNameGive <- gsub(x = out.name, pattern = ".txt", replacement = "")
+        outNameGive <- gsub(x = GenePopData, pattern = ".txt", replacement = "")
         outNameGive <- paste0(outNameGive, "_S", sim)
 
         popvecout.fname <- gsub(x = GenePopData, pattern = ".txt", replacement = "_individuals.txt")
