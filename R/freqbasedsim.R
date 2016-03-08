@@ -333,7 +333,7 @@ freqbasedsim <- function(GenePopData, pop.groups = c("PopA", "PopB"), outputName
         fam.to.bind.name <- "F1.out"
 
         fam.to.bind <- get(fam.to.bind.name)
-        indiv .hold <- fam.to.bind[,1]
+        indiv.hold <- fam.to.bind[,1]
         loci.bind <- which(str_detect(string = colnames(fam.to.bind), pattern = "\\.2")==TRUE)
         col.out <- NULL
 

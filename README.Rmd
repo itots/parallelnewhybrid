@@ -10,6 +10,8 @@
 **parallelnh_xx.R** | Iteratively assigns NewHybrids analyses to the *c* available cores in a computer.  
 **nh_zcore.R** | Inserts genotype category assignments to NewHybrids format files (see Anderson XXXX)  
 **freqbasedsim.R** | Creates simulated hybrid datasets comprised of *two pure parental groups*, *F1*, *F2*, and *backcrosses to both parentals* 
+**freqbasedsim_Advanced.R** | Creates simulated hybrid datasets comprised of *two pure parental groups*, *F1*, *F2*, and *backcrosses to both parentals*. Allows the number of individuals of each genotype frequency category output to be specified by the user. 
+**freqbasedsim_UB.R** | Creates simulated hybrid datasets comprised of *two pure parental groups*, *F1*, *F2*, and *backcrosses to both parentals*. A less biased version of the simulation function which allows the user the specify the proportion of individuals in each of the two ancestral populations to be used to generate the allele frequencies upon which to base the simulations. Also allows the number of individuals of each genotype frequency category output to be specified by the user. 
 
 ***  
 
@@ -73,12 +75,26 @@ Example datasets have been provided as R images (.rda files). These can be loade
 ------------|----------  
 *GenePopData*| GenePop formatted file containing genotypes from two (2) ancestral populations. This is the data from which the simulated hybrids will be constructed  
 *pop.groups*|An optional character vector denoting how the two ancestral populations should be named; default is PopA and PopB
-*outputName*|An optioanal character vector to be applied as the name of the output. The default is NULL, in which case the output name is constructed from the name of the input, with the suffix *\_SiRj_NH* added where *i* is the number of *S*imulations corresponding to the output, and *j* is the number of *R*eplicates of the *ith* simulation. NH refers to the fact that the output is in NewHybrids format.  
-*sample.size*|test ; an integer number of simulated individuals to be created for each of the six hybrid classes (e.g. 200 * each of Pure1, Pure2, F1, F2, BC1 and BC2 = 1200 total simulated individuals). Default is 200  
+*outputName*|An optional character vector to be applied as the name of the output. The default is NULL, in which case the output name is constructed from the name of the input, with the suffix *\_SiRj_NH* added where *i* is the number of *S*imulations corresponding to the output, and *j* is the number of *R*eplicates of the *ith* simulation. NH refers to the fact that the output is in NewHybrids format.  
+*sample.size*|An optional integer to specify the number of simulated individuals to be created for each of the six hybrid classes (e.g. 200 * each of Pure1, Pure2, F1, F2, BC1 and BC2 = 1200 total simulated individuals). Default is 200  
 *NumSims*|An integer number of simulated datasets to be created. Default is 1  
 *NumReps*|An integer number of replicates to be created for each of the *i* simulated datasets specified in NumSims. Default is 1  
 
 ***  
+
+####freqbasedsim_Advanced  
+
+**Parameter** | **Description**
+------------|----------  
+*GenePopData*| GenePop formatted file containing genotypes from two (2) ancestral populations. This is the data from which the simulated hybrids will be constructed  
+*pop.groups*|An optional character vector denoting how the two ancestral populations should be named; default is PopA and PopB
+*outputName*|An optioanal character vector to be applied as the name of the output. The default is NULL, in which case the output name is constructed from the name of the input, with the suffix *\_SiRj_NH* added where *i* is the number of *S*imulations corresponding to the output, and *j* is the number of *R*eplicates of the *ith* simulation. NH refers to the fact that the output is in NewHybrids format.  
+*sample.sizePure*|An optional integer to specify the number of simulated  Pure1 and Pure2 individuals (centred ancestral populations) to be created. Default is 200  
+*sample.sizeF1*|An optional integer to specify the number of simulated  F1 individuals (Pure1 X Pure2) to be created. Default is 200  
+*sample.sizeF2*|An optional integer to specify the number of simulated  F2 dividuals (F1 X F1) to be created. Default is 200  
+*sample.sizeBC*|An optional integer to specify the number of simulated  Back Cross1 and BackCross2 individuals (Pure1 X F1 and Pure2XF2) to be created. Default is 200  
+*NumSims*|An integer number of simulated datasets to be created. Default is 1  
+*NumReps*|An integer number of replicates to be created for each of the *i* simulated datasets specified in NumSims. Default is 1  
 
 ####nh_zcore  
 
