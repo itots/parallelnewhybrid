@@ -23,6 +23,7 @@ freqbasedsim <- function(GenePopData, pop.groups = c("PopA", "PopB"), outputName
   GPsplit <- c(str_split(string = GenePopData, pattern = "/"))
 
   outNameHold <- str_extract(GPsplit, paste0("[:word:]{3,}", ".txt"))
+  outNameHold <- gsub(x = outputName, pattern = ".txt", replacement = "")
 
   NumIndivs <- sample.size*6
 

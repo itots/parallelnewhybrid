@@ -1,14 +1,18 @@
-#' @name freqbasedsim_Advanced
-#' @title Simulate Multi-Generational Hybrids
+#' @name freqbasedsim_UB
+#' @title Simulate Multi-Generational Hybrids Unbiased(?)
 #'
-#' @description \code{freqbasedsim_Advanced} generates simulated, centred Pure1, Pure2, F1, F2, BC1 and BC2 offspring based on the genotype frequencies of two ancestral populations provided. The advanced version also allows the user to specify the number of individuals of each category to be simulated (including zero individuals should the user not wish to simulate a category).
+#' @description \code{freqbasedsim} generates simulated, centred Pure1, Pure2, F1, F2, BC1 and BC2 offspring based on the
+#'  genotype frequencies of two ancestral populations provided
 #' @param NumSims an integer number of simulated datasets to be created; default is 1
 #' @param NumReps an integer number of replicates to be created for each of the n simulated datasets specified
 #'    in NumSims; default is 1
-#' @param sample.sizePure an integer number of simulated Pure1 and Pure2 (centred ancestral populations) individuals to be created; default is 200
-#' @param sample.sizeF1 an integer number of simulated F1 individuals to be created; default is 200
-#' @param sample.sizeF2 an integer number of simulated F1 individuals to be created; default is 200
-#' @param sample.sizeBC an integer number of simulated Backross1 and Backcross2 (F1 X each of the Pure1 and Pure2) individuals to be created; default is 200
+#' @param prop.sample The proportion of individuals in both ancestral PopA and PopB to sample to create the simulated hybrids (Pure1, Pure2, F1, F2, BC1, and BC2)
+#' @param sample.sizePure1 an optional integer number to specify the number of simulated Pure1 individuals (centred ancestral PopA) to be output when the desired number is less than the number of individuals in Ancestral Population 1 * prop.sample. The default is NULL, where the number output = number of individuals in Ancestral Population 1 * prop.sample. If a number greater than number of individuals in Ancestral Population 1 * prop.sample is requested, the number of individuals in Ancestral Population 1 * prop.sample are output.
+#' @param sample.sizePure2 an optional integer number to specify the number of simulated Pure2 individuals (centred ancestral PopB) to be output when the desired number is less than the number of individuals in Ancestral Population 2 * prop.sample. The default is NULL, where the number output = number of individuals in Ancestral Population 2 * prop.sample. If a number greater than number of individuals in Ancestral Population 2 * prop.sample is requested, the number of individuals in Ancestral Population 2 * prop.sample are output.
+#' @param sample.sizeF1 an optional integer number of simulated F1 individuals to be output when the desired number of simulated F1 individuals is less than (number of individuals in Ancestral PopA + number of individuals in Ancestral PopB) * prop.sample. The default is NULL where the number returned = (number of individuals in Ancestral PopA + number of individuals in Ancestral PopB) * prop.sample. Unless sample.sizeF1 is explicitly stated, even when sample.sizePure1 and sample.sizePure2 are specified, the number of simulated F1 individuals returned will be equal to (number of individuals in Ancestral PopA + number of individuals in Ancestral PopB) * prop.sample.
+#' @param sample.sizeF2 an optional integer number of simulated F2 individuals to be output when the desired number of simulated F2 individuals is less than (number of individuals in Ancestral PopA + number of individuals in Ancestral PopB) * prop.sample. The default is NULL where the number returned = (number of individuals in Ancestral PopA + number of individuals in Ancestral PopB) * prop.sample. Unless sample.sizeF2 is explicitly stated, even when sample.sizePure1 and sample.sizePure2 are specified, the number of simulated F2 individuals returned will be equal to (number of individuals in Ancestral PopA + number of individuals in Ancestral PopB) * prop.sample.
+#' @param sample.sizeBC1 an optional integer number of simulated BC1 (PopA X F1) individuals to be output when the desired number of simulated BC1 individuals is less than the number of individuals in Ancestral PopA * prop.sample. The default is NULL where the number returned = number of individuals in Ancestral PopA * prop.sample. Unless sample.sizeBC1 is explicitly stated, even when sample.sizePure1 and sample.sizeF1 are specified, the number of simulated BC1 individuals returned will be equal to number of individuals in Ancestral PopA * prop.sample.
+#' @param sample.sizeBC2 an optional integer number of simulated BC2 (PopB X F1) individuals to be output when the desired number of simulated BC2 individuals is less than the number of individuals in Ancestral PopB * prop.sample. The default is NULL where the number returned = number of individuals in Ancestral PopB * prop.sample. Unless sample.sizeBC2 is explicitly stated, even when sample.sizePure2 and sample.sizeF1 are specified, the number of simulated BC2 individuals returned will be equal to number of individuals in Ancestral PopB * prop.sample.
 #' @param outputName an optioanal character vector to be applied as the name of the output. The default is NULL, in which case the output name is constructed from the name of the input, with the suffix _SiRj_NH added where i is the number of simulations corresponding to the output, and j is the number of replicates of the ith simulation. NH refers to the fact that the output is in NewHybrids format
 #' @param GenePopData file path to a GenePop formatted file containing genotypes from two (2) ancestral populations. This is the data from which the simulated hybrids will be constructed
 #' @param pop.groups Optional character vector denoting how the two ancestral populations should be named; default is PopA and PopB
@@ -17,24 +21,37 @@
 #' @import plyr
 #' @import tidyr
 
+freqbasedsim_Advanced <- function(GenePopData, pop.groups = c("PopA", "PopB"), outputName = NULL, NumSims = 1, NumReps = 1, prop.sample = 0.9, sample.sizePure1 = NULL, sample.sizePure2 = NULL, sample.sizeF1 = NULL, sample.sizeF2 = NULL, sample.sizeBC1 = NULL, sample.sizeBC2 = NULL){
 
-freqbasedsim_Advanced <- function(GenePopData, pop.groups = c("PopA", "PopB"), outputName = NULL, NumSims = 1, NumReps = 1, sample.sizePure = 200, sample.sizeF1 = 200, sample.sizeF2 = 200, sample.sizeBC = 200){
+# library("stringr")
+# library("plyr")
+# library("tidyr")
+
+# GenePopData <- "~/Desktop/DFO Aquaculture Interaction/Nova Scotia hybrid Analysis/NS Anal/NovaScotiaTop240Unlinked.txt"
+# pop.groups = c("PopA", "PopB")
+# prop.sample <- 0.9
+# NumSims = 1
+#  NumReps = 1
+#  outputName = NULL
+#  sample.sizePure1 = 50
+#  sample.sizePure2 = 100
+#  sample.sizeF1 = NULL
+#  sample.sizeF2 = NULL
+#  sample.sizeBC1 = NULL
+#  sample.sizeBC2 = NULL
+#
 
 
-  max.ss <- max(sample.sizePure, sample.sizePure, sample.sizeF1, sample.sizeF2, sample.sizeBC, sample.sizeBC)
 
-  if(max.ss<200){
-    max.ss = 200
-  }
 
   GenePop <- read.table(GenePopData, header = FALSE, sep = "\t", quote = "", stringsAsFactors = FALSE)
 
   GPsplit <- c(str_split(string = GenePopData, pattern = "/"))
 
   outNameHold <- str_extract(GPsplit, paste0("[:word:]{3,}", ".txt"))
-  outNameHold <- gsub(x = outputName, pattern = ".txt", replacement = "")
+  outNameHold <- gsub(x = outNameHold, pattern = ".txt", replacement = "")
 
-  NumIndivs <- (2*sample.sizePure) + sample.sizeF1 + sample.sizeF2 + (2*sample.sizeBC)
+
 
   stacks.version <- GenePop[1,] # this could be blank or any other source. ## this was duplicated from another function - not sure if needed
 
@@ -125,6 +142,16 @@ freqbasedsim_Advanced <- function(GenePopData, pop.groups = c("PopA", "PopB"), o
      ## get the nubmer of indivudals within each "Pop" grouping --- the Number of individuals in the two ancesntal populations need not be the same as the nubmer of individuals to be simulated
     PopLengths <- table(temp2$Pop)
 
+    ## based on the need to only use a proportion of indv in generating the simulated pops
+    ss.sizePure1 <- ceiling(PopLengths[1] * prop.sample)
+    ss.sizePure2 <- ceiling(PopLengths[2] * prop.sample)
+    ss.sizeF1 <- ss.sizePure1 + ss.sizePure2
+    ss.sizeF2 <- ss.sizePure1 + ss.sizePure2
+    ss.sizeBC1 <- ss.sizePure1
+    ss.sizeBC2 <- ss.sizePure2
+
+
+
      ## Need to be able to tell what row each individual is in, and what population it is
         ind.vector = c(1:nrow(temp)) ### make a vector that is the number of individuals
         ind.matrix = data.frame(temp2$Pop, ind.vector) ## add populatuions to that
@@ -165,13 +192,14 @@ freqbasedsim_Advanced <- function(GenePopData, pop.groups = c("PopA", "PopB"), o
                for(sim in 1:NumSims){
 
                       ### MAKE PURE CROSS - centre the data -
+                        pure.ss <- c(ss.sizePure1, ss.sizePure2)
                         pure.name.recall <- NULL
                           for(k in 1:length(pop.groups)){
                             pop1 <- get(mat.name.recall[k])
                             pop2 <- get(mat.name.recall[k])
-
+                            to.samplePure <- pure.ss[k]
                             off.interspersed.out <- NULL
-                                for(i in 1:max.ss){
+                                for(i in 1:to.samplePure){
 
                                 hold.off.pop1 <- apply(pop1, FUN = sample, 2, 1)
                                 hold.off.pop2 <- apply(pop2, FUN = sample, 2, 1)
@@ -211,7 +239,7 @@ freqbasedsim_Advanced <- function(GenePopData, pop.groups = c("PopA", "PopB"), o
                   pop1 <- get(inv.pure.name.recall[1])
                   pop2 <- get(inv.pure.name.recall[2])
                   F1.out <- NULL
-                  for(i in 1:max.ss){
+                  for(i in 1:ss.sizeF1){
 
                     hold.off.pop1 <- apply(pop1, FUN = sample, 2, 1)
                     hold.off.pop2 <- apply(pop2, FUN = sample, 2, 1)
@@ -238,7 +266,7 @@ freqbasedsim_Advanced <- function(GenePopData, pop.groups = c("PopA", "PopB"), o
               pop1 <- inv.F1
               pop2 <- inv.F1
               F2.out <- NULL
-              for(i in 1:max.ss){
+              for(i in 1:ss.sizeF2){
 
                 hold.off.pop1 <- apply(pop1, FUN = sample, 2, 1)
                 hold.off.pop2 <- apply(pop2, FUN = sample, 2, 1)
@@ -250,14 +278,15 @@ freqbasedsim_Advanced <- function(GenePopData, pop.groups = c("PopA", "PopB"), o
 
             ### MAKE Back CROSS
 
-
+            BC.ss <- c(ss.sizeBC1, ss.sizeBC2)
             BC.name.recall <- NULL
             for(k in 1:length(pop.groups)){
 
               pop1 <- get(inv.pure.name.recall[k])
               pop2 <- inv.F1
+              to.sampleBC <- BC.ss[k]
               off.interspersed.out <- NULL
-                for(i in 1:max.ss){
+                for(i in 1:to.sampleBC){
 
                   hold.off.pop1 <- apply(pop1, FUN = sample, 2, 1)
                   hold.off.pop2 <- apply(pop2, FUN = sample, 2, 1)
@@ -277,7 +306,7 @@ freqbasedsim_Advanced <- function(GenePopData, pop.groups = c("PopA", "PopB"), o
 
 
               for(i in 1:length(pure.name.recall)){
-                off.name <- paste(pure.name.recall[i], c(1:max.ss), sep="_")
+                off.name <- paste(pure.name.recall[i], c(1:pure.ss[i]), sep="_")
                 hold.dat <- get(pure.name.recall[i])
                 hold.dat <- data.frame(off.name, hold.dat)
                 ColumnData.Dup.insert = c("ID", ColumnData.Dup)
@@ -286,17 +315,17 @@ freqbasedsim_Advanced <- function(GenePopData, pop.groups = c("PopA", "PopB"), o
                   }
 
 
-            f1.off.name <- paste("F1", c(1:max.ss), sep = "_")
+            f1.off.name <- paste("F1", c(1:ss.sizeF1), sep = "_")
             F1.out <- data.frame(f1.off.name, F1.out)
             colnames(F1.out) <- c("ID", ColumnData.Dup)
 
-            f2.off.name <- paste("F2", c(1:max.ss), sep = "_")
+            f2.off.name <- paste("F2", c(1:ss.sizeF2), sep = "_")
             F2.out <-  data.frame(f2.off.name, F2.out)
             colnames(F2.out) <- c("ID", ColumnData.Dup)
 
 
             for(i in 1:length(BC.name.recall)){
-              off.name <- paste(BC.name.recall[i], c(1:max.ss), sep="_")
+              off.name <- paste(BC.name.recall[i], c(1:BC.ss[i]), sep="_")
               hold.dat <- get(BC.name.recall[i])
               hold.dat <- data.frame(off.name, hold.dat)
               ColumnData.Dup.insert = c("ID", ColumnData.Dup)
@@ -427,10 +456,44 @@ freqbasedsim_Advanced <- function(GenePopData, pop.groups = c("PopA", "PopB"), o
 
         #Now recompile the NewHybrids
 
+        ss.Pure1Out <- ss.sizePure1
+        ss.Pure2Out <- ss.sizePure2
+        ss.F1Out <- ss.sizeF1
+        ss.F2Out <- ss.sizeF2
+        ss.BC1Out <- ss.sizeBC1
+        ss.BC2Out <- ss.sizeBC2
+
+        if(length(sample.sizePure1 > 0)){
+          if(sample.sizePure1 < ss.sizePure1){ss.Pure1Out <- sample.sizePure1}
+        }
+
+        if(length(sample.sizePure2 > 0)){
+          if(sample.sizePure2 < ss.sizePure2){ss.Pure2Out <- sample.sizePure2}
+        }
+
+        if(length(sample.sizeF1 > 0)){
+          if(sample.sizeF1 < ss.sizeF1){ss.F1Out <- sample.sizeF1}
+        }
+
+        if(length(sample.sizeF2 > 0)){
+          if(sample.sizeF2 < ss.sizeF2){ss.F2Out <- sample.sizeF2}
+        }
+
+
+           if(length(sample.sizeBC1 > 0)){
+          if(sample.sizeBC1 < ss.sizeBC1){ss.BC1Out <- sample.sizeBC1}
+        }
+
+        if(length(sample.sizeBC2 > 0)){
+          if(sample.sizeBC2 < ss.sizeF2){ss.BC2Out <- sample.sizeBC2}
+        }
+
 
         pop.names <- c(pure.name.recall, "F1.out", "F2.out", BC.name.recall)
 
-        no.sim.keep.vec <- c(sample.sizePure, sample.sizePure, sample.sizeF1, sample.sizeF2, sample.sizeBC, sample.sizeBC)
+        NumIndivs <- c(ss.Pure1Out + ss.Pure2Out + ss.F1Out + ss.F2Out + ss.BC1Out + ss.BC2Out)
+
+        no.sim.keep.vec <- c(ss.Pure1Out, ss.Pure2Out, ss.F1Out, ss.F2Out, ss.BC1Out, ss.BC2Out)
         popvecout <- NULL
         for(i in 1:length(pop.names)){
 
@@ -464,7 +527,8 @@ freqbasedsim_Advanced <- function(GenePopData, pop.groups = c("PopA", "PopB"), o
 
         Loci.out <- c(insertNumIndivs, insertNumLoci, insertYourDigits, insertFormat, insertLociName,   Loci.sim)
 
-        outNameGive <- gsub(x = out.name, pattern = ".txt", replacement = "")
+        outNameGive <- gsub(x = GenePopData, pattern = ".txt", replacement = "")
+        #outNameGive <- outNameHold
         outNameGive <- paste0(outNameGive, "_S", sim)
 
         popvecout.fname <- gsub(x = GenePopData, pattern = ".txt", replacement = "_individuals.txt")
