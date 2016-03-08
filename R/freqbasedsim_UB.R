@@ -4,8 +4,7 @@
 #' @description \code{freqbasedsim} generates simulated, centred Pure1, Pure2, F1, F2, BC1 and BC2 offspring based on the
 #'  genotype frequencies of two ancestral populations provided
 #' @param NumSims an integer number of simulated datasets to be created; default is 1
-#' @param NumReps an integer number of replicates to be created for each of the n simulated datasets specified
-#'    in NumSims; default is 1
+#' @param NumReps an integer number of replicates to be created for each of the n simulated datasets specified in NumSims; default is 1
 #' @param prop.sample The proportion of individuals in both ancestral PopA and PopB to sample to create the simulated hybrids (Pure1, Pure2, F1, F2, BC1, and BC2)
 #' @param sample.sizePure1 an optional integer number to specify the number of simulated Pure1 individuals (centred ancestral PopA) to be output when the desired number is less than the number of individuals in Ancestral Population 1 * prop.sample. The default is NULL, where the number output = number of individuals in Ancestral Population 1 * prop.sample. If a number greater than number of individuals in Ancestral Population 1 * prop.sample is requested, the number of individuals in Ancestral Population 1 * prop.sample are output.
 #' @param sample.sizePure2 an optional integer number to specify the number of simulated Pure2 individuals (centred ancestral PopB) to be output when the desired number is less than the number of individuals in Ancestral Population 2 * prop.sample. The default is NULL, where the number output = number of individuals in Ancestral Population 2 * prop.sample. If a number greater than number of individuals in Ancestral Population 2 * prop.sample is requested, the number of individuals in Ancestral Population 2 * prop.sample are output.
@@ -19,9 +18,8 @@
 #' @export
 #' @import stringr
 #' @import plyr
-#' @import tidyr
 
-freqbasedsim_Advanced <- function(GenePopData, pop.groups = c("PopA", "PopB"), outputName = NULL, NumSims = 1, NumReps = 1, prop.sample = 0.9, sample.sizePure1 = NULL, sample.sizePure2 = NULL, sample.sizeF1 = NULL, sample.sizeF2 = NULL, sample.sizeBC1 = NULL, sample.sizeBC2 = NULL){
+freqbasedsim_UB <- function(GenePopData, pop.groups = c("PopA", "PopB"), outputName = NULL, NumSims = 1, NumReps = 1, prop.sample = 0.9, sample.sizePure1 = NULL, sample.sizePure2 = NULL, sample.sizeF1 = NULL, sample.sizeF2 = NULL, sample.sizeBC1 = NULL, sample.sizeBC2 = NULL){
 
 # library("stringr")
 # library("plyr")
@@ -77,7 +75,7 @@ freqbasedsim_Advanced <- function(GenePopData, pop.groups = c("PopA", "PopB"), o
 
     #Seperate the snpdata
     #First we pull out the population data which follows "TEXT ,  "
-        temp <- separate(snpData,data,into=c("Pops","snps"),sep=",")
+        temp <- tidyr::separate(snpData,data,into=c("Pops","snps"),sep=",")
         temp$snps <- substring(temp$snps,3) # delete the extra spaces at the beginning
         temp2 <- data.frame(do.call(rbind, str_extract_all(temp$snps, "[0-9]{3}")))
 

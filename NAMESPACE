@@ -2,6 +2,7 @@
 
 export(freqbasedsim)
 export(freqbasedsim_Advanced)
+export(freqbasedsim_UB)
 export(nh_zcore)
 export(parallelnh_WIN)
 export(paralllelnh_LINUX)
@@ -9,4 +10,3 @@ export(paralllelnh_OSX)
 import(parallel)
 import(plyr)
 import(stringr)
-import(tidyr)

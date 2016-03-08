@@ -15,7 +15,6 @@
 #' @export
 #' @import stringr
 #' @import plyr
-#' @import tidyr
 
 
 freqbasedsim_Advanced <- function(GenePopData, pop.groups = c("PopA", "PopB"), outputName = NULL, NumSims = 1, NumReps = 1, sample.sizePure = 200, sample.sizeF1 = 200, sample.sizeF2 = 200, sample.sizeBC = 200){
@@ -60,7 +59,7 @@ freqbasedsim_Advanced <- function(GenePopData, pop.groups = c("PopA", "PopB"), o
 
     #Seperate the snpdata
     #First we pull out the population data which follows "TEXT ,  "
-        temp <- separate(snpData,data,into=c("Pops","snps"),sep=",")
+        temp <- tidyr::separate(snpData,data,into=c("Pops","snps"),sep=",")
         temp$snps <- substring(temp$snps,3) # delete the extra spaces at the beginning
         temp2 <- data.frame(do.call(rbind, str_extract_all(temp$snps, "[0-9]{3}")))
 

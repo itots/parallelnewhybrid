@@ -5,9 +5,8 @@
 \title{Simulate Multi-Generational Hybrids}
 \usage{
 freqbasedsim_Advanced(GenePopData, pop.groups = c("PopA", "PopB"),
-  outputName = NULL, NumSims = 1, NumReps = 1, prop.sample = 0.9,
-  sample.sizePure1 = NULL, sample.sizePure2 = NULL, sample.sizeF1 = NULL,
-  sample.sizeF2 = NULL, sample.sizeBC1 = NULL, sample.sizeBC2 = NULL)
+  outputName = NULL, NumSims = 1, NumReps = 1, sample.sizePure = 200,
+  sample.sizeF1 = 200, sample.sizeF2 = 200, sample.sizeBC = 200)
 }
 \arguments{
 \item{GenePopData}{file path to a GenePop formatted file containing genotypes from two (2) ancestral populations. This is the data from which the simulated hybrids will be constructed}
@@ -21,11 +20,11 @@ freqbasedsim_Advanced(GenePopData, pop.groups = c("PopA", "PopB"),
 \item{NumReps}{an integer number of replicates to be created for each of the n simulated datasets specified
 in NumSims; default is 1}
 
+\item{sample.sizePure}{an integer number of simulated Pure1 and Pure2 (centred ancestral populations) individuals to be created; default is 200}
+
 \item{sample.sizeF1}{an integer number of simulated F1 individuals to be created; default is 200}
 
 \item{sample.sizeF2}{an integer number of simulated F1 individuals to be created; default is 200}
-
-\item{sample.sizePure}{an integer number of simulated Pure1 and Pure2 (centred ancestral populations) individuals to be created; default is 200}
 
 \item{sample.sizeBC}{an integer number of simulated Backross1 and Backcross2 (F1 X each of the Pure1 and Pure2) individuals to be created; default is 200}
 }
