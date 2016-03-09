@@ -1,5 +1,5 @@
 #' @name freqbasedsim_UB2
-#' @title Simulate Multi-Generational Hybrids Unbiased(?)
+#' @title Simulate Multi-Generational Hybrids Unbiased(?) SAMPLING WITHOUT REPLACEMENT
 #'
 #' @description \code{freqbasedsim} generates simulated, centred Pure1, Pure2, F1, F2, BC1 and BC2 offspring based on the
 #'  genotype frequencies of two ancestral populations provided
