@@ -19,7 +19,7 @@
 #' @import stringr
 #' @import plyr
 
-freqbasedsim_UB <- function(GenePopData, pop.groups = c("PopA", "PopB"), outputName = NULL, NumSims = 1, NumReps = 1, prop.sample = 0.9, sample.sizePure1 = NULL, sample.sizePure2 = NULL, sample.sizeF1 = NULL, sample.sizeF2 = NULL, sample.sizeBC1 = NULL, sample.sizeBC2 = NULL){
+freqbasedsim_UB2 <- function(GenePopData, pop.groups = c("PopA", "PopB"), outputName = NULL, NumSims = 1, NumReps = 1, prop.sample = 0.9, sample.sizePure1 = NULL, sample.sizePure2 = NULL, sample.sizeF1 = NULL, sample.sizeF2 = NULL, sample.sizeBC1 = NULL, sample.sizeBC2 = NULL){
 
 # library("stringr")
 # library("plyr")
