@@ -3,6 +3,7 @@
 export(freqbasedsim)
 export(freqbasedsim_Advanced)
 export(freqbasedsim_UB)
+export(freqbasedsim_UB2)
 export(nh_zcore)
 export(parallelnh_WIN)
 export(paralllelnh_LINUX)
