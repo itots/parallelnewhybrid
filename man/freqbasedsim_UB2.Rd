@@ -35,7 +35,6 @@ freqbasedsim_UB2(GenePopData, pop.groups = c("PopA", "PopB"),
 \item{sample.sizeBC2}{An optional integer to specify the number of simulated BC2 (PopB X F1) individuals to be output when the desired number of simulated BC2 individuals is less than the number of individuals in Ancestral PopB * prop.sample. The default is NULL where the number returned = number of individuals in Ancestral PopB * prop.sample. Unless sample.sizeBC2 is explicitly stated, even when sample.sizePure2 and sample.sizeF1 are specified, the number of simulated BC2 individuals returned will be equal to number of individuals in Ancestral PopB * prop.sample.}
 }
 \description{
-\code{freqbasedsim_UB2} generates simulated, centred Pure1, Pure2, F1, F2, BC1 and BC2 offspring based on the
- genotype frequencies of two ancestral populations provided
+\code{freqbasedsim_UB2} generates simulated, centred Pure1, Pure2, F1, F2, BC1 and BC2 offspring based on the genotype frequencies of two ancestral populations provided
 }
 

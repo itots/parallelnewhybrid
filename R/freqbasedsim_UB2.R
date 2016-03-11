@@ -1,8 +1,7 @@
 #' @name freqbasedsim_UB2
 #' @title Simulate Multi-Generational Hybrids Unbiased(?) SAMPLING WITHOUT REPLACEMENT
 #'
-#' @description \code{freqbasedsim_UB2} generates simulated, centred Pure1, Pure2, F1, F2, BC1 and BC2 offspring based on the
-#'  genotype frequencies of two ancestral populations provided
+#' @description \code{freqbasedsim_UB2} generates simulated, centred Pure1, Pure2, F1, F2, BC1 and BC2 offspring based on the genotype frequencies of two ancestral populations provided
 #' @param NumSims an integer number of simulated datasets to be created; default is 1
 #' @param NumReps an integer number of replicates to be created for each of the n simulated datasets specified in NumSims; default is 1
 #' @param prop.sample The proportion of individuals in both ancestral PopA and PopB to sample to create the simulated hybrids (Pure1, Pure2, F1, F2, BC1, and BC2)
