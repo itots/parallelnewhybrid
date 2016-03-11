@@ -24,18 +24,18 @@ freqbasedsim_UB2 <- function(GenePopData, pop.groups = c("PopA", "PopB"), output
 # library("plyr")
 # library("tidyr")
 
-GenePopData <- "~/Desktop/DFO Aquaculture Interaction/Nova Scotia hybrid Analysis/NS Anal/NovaScotiaTop240Unlinked.txt"
-pop.groups = c("PopA", "PopB")
-prop.sample <- 0.9
-NumSims = 1
- NumReps = 1
- outputName = NULL
- sample.sizePure1 = NULL
- sample.sizePure2 = NULL
- sample.sizeF1 = NULL
- sample.sizeF2 = NULL
- sample.sizeBC1 = NULL
- sample.sizeBC2 = NULL
+# GenePopData <- "~/Desktop/DFO Aquaculture Interaction/Nova Scotia hybrid Analysis/NS Anal/NovaScotiaTop240Unlinked.txt"
+# pop.groups = c("PopA", "PopB")
+# prop.sample <- 0.9
+# NumSims = 1
+#  NumReps = 1
+#  outputName = NULL
+#  sample.sizePure1 = NULL
+#  sample.sizePure2 = NULL
+#  sample.sizeF1 = NULL
+#  sample.sizeF2 = NULL
+#  sample.sizeBC1 = NULL
+#  sample.sizeBC2 = NULL
 
 
 
