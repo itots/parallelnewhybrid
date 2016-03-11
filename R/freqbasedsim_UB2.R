@@ -12,13 +12,13 @@
 #' @param sample.sizeBC1 An optional integer to specify the number of simulated BC1 (PopA X F1) individuals to be output when the desired number of simulated BC1 individuals is less than the number of individuals in Ancestral PopA * prop.sample. The default is NULL where the number returned = number of individuals in Ancestral PopA * prop.sample. Unless sample.sizeBC1 is explicitly stated, even when sample.sizePure1 and sample.sizeF1 are specified, the number of simulated BC1 individuals returned will be equal to number of individuals in Ancestral PopA * prop.sample.
 #' @param sample.sizeBC2 An optional integer to specify the number of simulated BC2 (PopB X F1) individuals to be output when the desired number of simulated BC2 individuals is less than the number of individuals in Ancestral PopB * prop.sample. The default is NULL where the number returned = number of individuals in Ancestral PopB * prop.sample. Unless sample.sizeBC2 is explicitly stated, even when sample.sizePure2 and sample.sizeF1 are specified, the number of simulated BC2 individuals returned will be equal to number of individuals in Ancestral PopB * prop.sample.
 #' @param outputName an optional character vector to be applied as the name of the output. The default is NULL, in which case the output name is constructed from the name of the input, with the suffix _SiRj_NH added where i is the number of simulations corresponding to the output, and j is the number of replicates of the ith simulation. NH refers to the fact that the output is in NewHybrids format
-#' @param GenePopData file path to a GenePop formatted file containing genotypes from two (2) ancestral populations. This is the data from which the simulated hybrids will be constructed
+#' @param GPD file path to a GenePop formatted file containing genotypes from two (2) ancestral populations. This is the data from which the simulated hybrids will be constructed
 #' @param pop.groups Optional character vector denoting how the two ancestral populations should be named; default is PopA and PopB
 #' @export
 #' @import stringr
 #' @import plyr
 
-freqbasedsim_UB2 <- function(GenePopData, pop.groups = c("PopA", "PopB"), outputName = NULL, NumSims = 1, NumReps = 1, prop.sample = 0.9, sample.sizePure1 = NULL, sample.sizePure2 = NULL, sample.sizeF1 = NULL, sample.sizeF2 = NULL, sample.sizeBC1 = NULL, sample.sizeBC2 = NULL){
+freqbasedsim_UB2 <- function(GPD, pop.groups = c("PopA", "PopB"), outputName = NULL, NumSims = 1, NumReps = 1, prop.sample = 0.9, sample.sizePure1 = NULL, sample.sizePure2 = NULL, sample.sizeF1 = NULL, sample.sizeF2 = NULL, sample.sizeBC1 = NULL, sample.sizeBC2 = NULL){
 
 # library("stringr")
 # library("plyr")
@@ -41,9 +41,9 @@ freqbasedsim_UB2 <- function(GenePopData, pop.groups = c("PopA", "PopB"), output
 
 
 
-  GenePop <- read.table(GenePopData, header = FALSE, sep = "\t", quote = "", stringsAsFactors = FALSE)
+  GenePop <- read.table(GPD, header = FALSE, sep = "\t", quote = "", stringsAsFactors = FALSE)
 
-  GPsplit <- c(str_split(string = GenePopData, pattern = "/"))
+  GPsplit <- c(str_split(string = GPD, pattern = "/"))
 
   outNameHold <- str_extract(GPsplit, paste0("[:word:]{3,}", ".txt"))
   outNameHold <- gsub(x = outNameHold, pattern = ".txt", replacement = "")

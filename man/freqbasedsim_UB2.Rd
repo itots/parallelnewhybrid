@@ -4,13 +4,13 @@
 \alias{freqbasedsim_UB2}
 \title{Simulate Multi-Generational Hybrids Unbiased(?) SAMPLING WITHOUT REPLACEMENT}
 \usage{
-freqbasedsim_UB2(GenePopData, pop.groups = c("PopA", "PopB"),
-  outputName = NULL, NumSims = 1, NumReps = 1, prop.sample = 0.9,
-  sample.sizePure1 = NULL, sample.sizePure2 = NULL, sample.sizeF1 = NULL,
-  sample.sizeF2 = NULL, sample.sizeBC1 = NULL, sample.sizeBC2 = NULL)
+freqbasedsim_UB2(GPD, pop.groups = c("PopA", "PopB"), outputName = NULL,
+  NumSims = 1, NumReps = 1, prop.sample = 0.9, sample.sizePure1 = NULL,
+  sample.sizePure2 = NULL, sample.sizeF1 = NULL, sample.sizeF2 = NULL,
+  sample.sizeBC1 = NULL, sample.sizeBC2 = NULL)
 }
 \arguments{
-\item{GenePopData}{file path to a GenePop formatted file containing genotypes from two (2) ancestral populations. This is the data from which the simulated hybrids will be constructed}
+\item{GPD}{file path to a GenePop formatted file containing genotypes from two (2) ancestral populations. This is the data from which the simulated hybrids will be constructed}
 
 \item{pop.groups}{Optional character vector denoting how the two ancestral populations should be named; default is PopA and PopB}
 
