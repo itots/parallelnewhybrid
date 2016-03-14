@@ -11,7 +11,7 @@
 #' @import plyr
 #' @import stringr
 
-paralllelnh_OSX <- function(folder.data, where.NH, burnin, sweeps){
+parallelnh_OSX <- function(folder.data, where.NH, burnin, sweeps){
 
   useroptions <- options()
 

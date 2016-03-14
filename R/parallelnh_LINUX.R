@@ -12,7 +12,7 @@
 #' @import stringr
 
 
-paralllelnh_LINUX <- function(folder.data, where.NH, burnin, sweeps){
+parallelnh_LINUX <- function(folder.data, where.NH, burnin, sweeps){
 
   useroptions <- options()
 
