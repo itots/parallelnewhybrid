@@ -22,7 +22,7 @@
 freqbasedsim_UB2 <- function(GPD, pop.groups = c("PopA", "PopB"), outputName = NULL, NumSims = 1, NumReps = 1, prop.sample = 0.9, sample.sizePure1 = NULL, sample.sizePure2 = NULL, sample.sizeF1 = NULL, sample.sizeF2 = NULL, sample.sizeBC1 = NULL, sample.sizeBC2 = NULL){
 
 
-  GenePop <- read.table(GPD, header = FALSE, sep = "\t", quote = "", stringsAsFactors = FALSE)
+   GenePop <- read.table(GPD, header = FALSE, sep = "\t", quote = "", stringsAsFactors = FALSE)
 
   GPsplit <- c(stringr::str_split(string = GPD, pattern = "/"))
 
@@ -182,6 +182,16 @@ freqbasedsim_UB2 <- function(GPD, pop.groups = c("PopA", "PopB"), outputName = N
                             # to.samplePure <- 9
 
                             off.interspersed.out <- NULL
+                                # for(i in 1:to.samplePure){
+                                #
+                                # hold.off.pop1 <- apply(pop1, FUN = sample, 2, 1)
+                                # hold.off.pop2 <- apply(pop2, FUN = sample, 2, 1)
+                                # hold.off.interspersed <- data.frame(c(rbind(hold.off.pop1, hold.off.pop2)))
+                                #
+                                # off.interspersed.out <- rbind(off.interspersed.out, t(hold.off.interspersed))
+                                #   } ## End of I loop
+
+
                                 for(i in 1:to.samplePure){
 
                                   to.getPop1 <- c(replicate(length(pop1), sample(1:nrow(pop1), 1)))
@@ -197,7 +207,11 @@ freqbasedsim_UB2 <- function(GPD, pop.groups = c("PopA", "PopB"), outputName = N
                                   pop2 <- data.frame(lapply(as.list(pop2), function(x){x[-c(as.numeric(x[length(x)]),length(x))]}), stringsAsFactors = FALSE)
 
 
-                                  hold.off.interspersed <- data.frame(c(rbind(hold.off.pop1, hold.off.pop2)))
+                                  hold.off.interspersed <- data.frame(c(rbind(unlist(hold.off.pop1), unlist(hold.off.pop2))))
+                                  # hold.off.interspersed <- rep(0,length(hold.off.pop1)*2)
+                                  # hold.off.interspersed[!1:length(hold.off.interspersed) %% 2 == 0]=as.vector(unlist(hold.off.pop1))
+                                  # hold.off.interspersed[1:length(hold.off.interspersed) %% 2 == 0]=as.vector(unlist(hold.off.pop2))
+
 
                                   off.interspersed.out <- rbind(off.interspersed.out, t(hold.off.interspersed))
 
@@ -211,8 +225,8 @@ freqbasedsim_UB2 <- function(GPD, pop.groups = c("PopA", "PopB"), outputName = N
 
                               } ## End of K loop
 
-
-                    inv.pure.name.recall <- NULL
+i = 1; k = 1
+                    inv.pure.name.recall <- NULL ### sets up the data as a matrix for sampling in the subsequent generations
                     for(i in 1:length(pop.recall)){
                       temp.mat <- data.frame(matrix(vector(), 2, length(temp2)/2))
                       pop.get <- get(pure.name.recall[i])
@@ -520,11 +534,11 @@ freqbasedsim_UB2 <- function(GPD, pop.groups = c("PopA", "PopB"), outputName = N
 
         Loci.out <- c(insertNumIndivs, insertNumLoci, insertYourDigits, insertFormat, insertLociName,   Loci.sim)
 
-        outNameGive <- gsub(x = GenePopData, pattern = ".txt", replacement = "")
+        outNameGive <- gsub(x = GPD, pattern = ".txt", replacement = "")
         #outNameGive <- outNameHold
         outNameGive <- paste0(outNameGive, "_S", sim)
 
-        popvecout.fname <- gsub(x = GenePopData, pattern = ".txt", replacement = "_individuals.txt")
+        popvecout.fname <- gsub(x = GPD, pattern = ".txt", replacement = "_individuals.txt")
         write(x = popvecout, file = popvecout.fname)
 
         for(r in 1:NumReps){
