@@ -2,10 +2,9 @@
 % Please edit documentation in R/parallelnh_LINUX.R
 \name{parallelnh_LINUX}
 \alias{parallelnh_LINUX}
-\alias{paralllelnh_LINUX}
 \title{Parallel NewHybrids - LINUX version}
 \usage{
-paralllelnh_LINUX(folder.data, where.NH, burnin, sweeps)
+parallelnh_LINUX(folder.data, where.NH, burnin, sweeps)
 }
 \arguments{
 \item{folder.data}{A file path to the folder in which the NewHybrids formatted files to be analyzed reside}

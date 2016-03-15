@@ -2,10 +2,9 @@
 % Please edit documentation in R/parallelnh_OSX.R
 \name{parallelnh_OSX}
 \alias{parallelnh_OSX}
-\alias{paralllelnh_OSX}
 \title{Parallel NewHybrids - OS X version}
 \usage{
-paralllelnh_OSX(folder.data, where.NH, burnin, sweeps)
+parallelnh_OSX(folder.data, where.NH, burnin, sweeps)
 }
 \arguments{
 \item{folder.data}{A file path to the folder in which the NewHybrids formatted files to be analyzed reside}
