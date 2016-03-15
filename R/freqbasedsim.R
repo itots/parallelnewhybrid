@@ -457,8 +457,8 @@ freqbasedsim <- function(GenePopData, pop.groups = c("PopA", "PopB"), outputName
 
           for(r in 1:NumReps){
 
-            outNameGive <- paste0(outNameGive, "R", r, "_NH.txt")
-            write.table(x = Loci.out, file = outNameGive, row.names = FALSE, col.names = FALSE, quote = FALSE)
+            outNameGiveOut <- paste0(outNameGive, "R", r, "_NH.txt")
+            write.table(x = Loci.out, file = outNameGiveOut, row.names = FALSE, col.names = FALSE, quote = FALSE)
        } # End reps loop
 
                 } ## end Sim loop
