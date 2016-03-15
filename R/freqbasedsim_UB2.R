@@ -15,7 +15,7 @@
 #' @param GPD file path to a GenePop formatted file containing genotypes from two (2) ancestral populations. This is the data from which the simulated hybrids will be constructed
 #' @param pop.groups Optional character vector denoting how the two ancestral populations should be named; default is PopA and PopB
 #' @export
-#' @importFrom  stringr str_extact_all str_extract
+#' @importFrom  stringr str_extract
 #' @import plyr
 #' @importFrom tidyr separate
 
