@@ -19,14 +19,28 @@ parallelnh_OSX <- function(folder.data, where.NH, burnin, sweeps){
     ## R will output in scientific notation, which is not interpreted correctly by NHm - will change back on exit
 
 
-    files.anal <- list.files(path = folder.data)
+  files.anal <- list.files(path = folder.data)
+
+  path.indiv.file <- NULL
+  indiv.file.exists <- grep(pattern = "individuals.txt", x = files.anal)
+
+    if(indiv.file.exists > 0){
+      path.indiv.file <- paste0(folder.data, files.anal[indiv.file.exists])
+      files.anal <- files.anal[-indiv.file.exists]
+    }
+    if(indiv.file.exists == 0){
+      writeLines("Note: An individual file has not been provided. Please refer to the help file for more information")
+    }
 
     dir.create(path = paste0(folder.data, "NH.Temp"))
     where.temp <- paste0(folder.data, "NH.Temp", "/")
 
+
+    ## create a new folder to put the results in - remember the inception thing - be smart
+    dir.create(path = paste0(folder.data, "NH.Results"))
+    res.path.make <- paste0(folder.data, "NH.Results") ## get the path to the new results folder
+
     h.cores <- detectCores()
-
-
 
     ## Copy the entire NH folder i times to the temp folder you made
     ## use a loop here because then can iteratively name the copies so that the file.copy doesn't
@@ -99,12 +113,6 @@ parallelnh_OSX <- function(folder.data, where.NH, burnin, sweeps){
         mclapply(X = jobs.vector, FUN = system, mc.cores = h.cores)
     }
 
-   ## create a new folder to put the results in - remember the inception thing - be smart
-dir.create(path = paste0(folder.data, "NH.Results"))
-
-res.path.make <- paste0(folder.data, "NH.Results") ## get the path to the new results folder
-
-# k = 1 # for internal code checking
 
 ## get the results generated for each copy of NH/file to be analyzed
 for(k in 1:length(NH.copy.list)){
@@ -114,6 +122,11 @@ for(k in 1:length(NH.copy.list)){
   dir.create(path = paste0(res.path.make, "/", res.name)) ## make that folder to put the resutls in
 
   where.the.results.to <- paste0(res.path.make, "/", res.name, "/") ## where did you make that folder?
+
+  ## copy in the proper data file from which the sims were made
+  file.copy(from = paste0(folder.data, files.anal[k]), to = where.the.results.to)
+  ## copy in the individual file
+  file.copy(from = paste0(path.indiv.file), to = where.the.results.to)
 
   NH.copy.to.get <- NH.copy.list[k] ## what copy of NH are we goign to look in?
   find.res.vec <- list.files(path = paste0(where.temp, NH.copy.to.get), pattern = "aa-") ## find all the files that
@@ -132,6 +145,9 @@ for(k in 1:length(NH.copy.list)){
   file.rename(from = old.name.vec.path, to = rename.vec.path) ## check that vectorized functionality in file.rename - mad props!
 }
 
-on.exit(options(useroptions))
+    unlink(paste0(folder.data, "NH.Temp", "/"), recursive = TRUE)
+
+
+    on.exit(options(useroptions))
 
 }
