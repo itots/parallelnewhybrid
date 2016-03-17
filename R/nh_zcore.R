@@ -27,6 +27,15 @@ nh_zcore <- function(GetstheZdir, multiapplyZvec=NULL, applyuniqueZvec=NULL){
   NHdataGet <- list.files(GetstheZdir)
       ## assumes you have given files in standard NewHybrids format
 
+  ### check to see that there are no individual files in the folder
+
+  indiv.file.exists <- grep(pattern = "individuals.txt", x = NHdataGet)
+
+  if(indiv.file.exists > 0){
+    NHdataGet <- NHdataGet[-indiv.file.exists]
+      }
+
+
   ## check if applyuniqueZvec has been called - and if so, error check the shit out of it
   if(length(applyuniqueZvec > 0)){
     ZvecList <- list.files(applyuniqueZvec)
