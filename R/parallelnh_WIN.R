@@ -69,7 +69,7 @@ parallelnh_WIN <- function(folder.data, where.NH, burnin, sweeps){
   ## add in randomized seeds - the NH guide says they should be small.
   r.seed <- sample(x = c(1:10), size = 2)
 
-  do.seed <- paste("--seeds", r.seed, sep=" ")
+    do.seed <- c("--seeds", r.seed)
 
   ## you know I love them NULL vecssssss
   jobs.vector <- NULL

@@ -88,9 +88,9 @@ parallelnh_LINUX <- function(folder.data, where.NH, burnin, sweeps){
 
     ## add in randomized seeds - the NH guide says they should be small.
 
-    r.seed <- sample(x = c(1:10), size = 2)
+   r.seed <- sample(x = c(1:10), size = 2)
 
-    do.seed <- paste("--seeds", r.seed, sep=" ")
+    do.seed <- c("--seeds", r.seed)
     burnin.do <- paste("--burn-in", burnin, sep=" ")
     sweeps.do <- paste("--num-sweeps", sweeps, sep=" ")
     ## replace with files.anal
@@ -102,7 +102,7 @@ parallelnh_LINUX <- function(folder.data, where.NH, burnin, sweeps){
         b.copy <- NH.copy.list[b]
         file.do <- paste("-d", files.anal[b])
         what.temp <- paste0(where.temp2, b.copy)
-        path.hold <- paste("cd", paste0(what.temp, ";"), "./newhybrids-no-gui-linux.exe", file.do, burnin.do, sweeps.do, "--no-gui", sep = " ")
+        path.hold <- paste("cd", paste0(what.temp, ";"), "./newhybrids-no-gui-linux.exe", file.do, burnin.do, sweeps.do, do.seed, "--no-gui", sep = " ")
         jobs.vector <- c(jobs.vector, path.hold)
 
     }
