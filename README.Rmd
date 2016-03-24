@@ -6,7 +6,7 @@
 ###Overview of functions:  
 
 **Function name** | **Main use**  
-------------|----------
+------------|---------------------------------------------------------------------------
 **parallelnh_xx.R** | Iteratively assigns NewHybrids analyses to the *c* available cores in a computer.  
 **nh_zcore.R** | Inserts genotype category assignments to NewHybrids format files (see Anderson XXXX)  
 **freqbasedsim.R** | Creates simulated hybrid datasets comprised of *two pure parental groups*, *F1*, *F2*, and *backcrosses to both parentals* 
