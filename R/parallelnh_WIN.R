@@ -80,7 +80,7 @@ parallelnh_WIN <- function(folder.data, where.NH, burnin, sweeps){
     b.copy <- NH.copy.list[b]
     file.do <- paste("-d", files.anal[b])
     what.temp <- paste0(where.temp, b.copy)
-    path.hold <- paste("cd", paste0(what.temp, " &"), "newhybrids.exe", file.do, burnin.do, sweeps.do, do.seed, "--no-gui", sep = " ") ## must separate
+    path.hold <- paste("cd", paste0(what.temp, " &"), "newhybrids.exe", file.do, burnin.do, sweeps.do, "--no-gui", sep = " ") ## must separate
     ## the get directory form teh command with & in Windows version
     jobs.vector <- rbind(jobs.vector, path.hold) ### rbind - will use ROW apply later
       }

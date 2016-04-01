@@ -1,6 +1,6 @@
 Package: parallelnewhybrid
 Type: Package
-Title: Parralelization of NewHybrids (Anderson XXXX) and Rapid Creation of
+Title: Parralelization of NewHybrids (Anderson 2002) and Rapid Creation of
     Simulated Hybrid Datasets
 Version: 0.0.0.9001
 Date: 2016-02-25
