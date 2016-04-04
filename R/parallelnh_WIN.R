@@ -128,9 +128,7 @@ parallelnh_WIN <- function(folder.data, where.NH, burnin, sweeps){
   ## gotta stop the slaves somehow
   #stopCluster(makecl) ### I think this works???
 
-  library(snow)
-  stopCluster(makecl)
-  mpi.quit()
+  parallel::stopCluster(cl = makecl)
 
   unlink(paste0(folder.data, "NH.Temp", "/"), recursive = TRUE)
 
