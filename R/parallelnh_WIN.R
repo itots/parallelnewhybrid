@@ -130,7 +130,7 @@ parallelnh_WIN <- function(folder.data, where.NH, burnin, sweeps){
 
   parallel::stopCluster(cl = makecl)
 
-  unlink(paste0(folder.data, "NH.Temp", "/"), recursive = TRUE)
+  unlink(paste0(folder.data, "NH.Temp"), recursive = TRUE)
 
   on.exit(options(useroptions))
 
