@@ -100,7 +100,7 @@ parallelnh_OSX <- function(folder.data, where.NH, burnin, sweeps){
         b.copy <- NH.copy.list[b]
         file.do <- paste("-d", files.anal[b])
         what.temp <- paste0(where.temp2, b.copy)
-        path.hold <- paste("cd", paste0(what.temp, ";"), "newhybsng", file.do, burnin.do, sweeps.do, do.seed, "--no-gui", sep = " ")
+        path.hold <- paste("cd", paste0(what.temp, ";"), "newhybsng", file.do, burnin.do, sweeps.do, "--no-gui", sep = " ")
         jobs.vector <- c(jobs.vector, path.hold)
 
     }
