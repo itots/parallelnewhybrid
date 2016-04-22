@@ -10,17 +10,6 @@ output:
 ### ***parallelnewhybrid*** is an R package designed to parallelize *NewHybrids* analyses
 
 
-
-###Overview of functions:  
-
-**Function name** | **Main use**  
-------------|---------------------------------------------------------------------------
-**parallelnh_xx.R** | Iteratively assigns *NewHybrids* analyses to the *c* available cores in a computer.  
-**nh_zcore.R** | Inserts genotype category assignments to *NewHybrids* format files (see Anderson 2002)  
-**freqbasedsim.R** | Creates simulated hybrid datasets comprised of *two pure parental groups*, *F1*, *F2*, and *backcrosses to both parentals* 
-**freqbasedsim_Advanced.R** | Creates simulated hybrid datasets comprised of *two pure parental groups*, *F1*, *F2*, and *backcrosses to both ancestral groups*. Allows the number of individuals of each genotype frequency category output to be specified by the user. 
-**freqbasedsim_UB2.R** | Creates simulated hybrid datasets comprised of *two pure parental groups*, *F1*, *F2*, and *backcrosses to both ancestral groups*. A less biased version of the simulation function which allows the user to specify the proportion of individuals in each of the two ancestral populations to be used to generate the allele frequencies upon which to base the simulations. Also allows the number of individuals of each genotype frequency category output to be specified by the user. 
-
 ***  
 
 ###Package Installation
