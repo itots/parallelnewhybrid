@@ -13,11 +13,11 @@ output:
 ***  
 
 ###Package Installation
-**parallelenh** can be installed from GitHub using the R package *devtools* and the function *install_github*:  
+**parallelenewhybrid** can be installed from GitHub using the R package *devtools* and the function *install_github*:  
 ```
 devtools::install_github("bwringe/parallelnewhybrid")
 ```
-<span style = "color:red"> <strong>NOTE:</strong></span> : **parallelnh** relies on functions from the R packages *parallel*, *plyr*, *stringr*, and *tidyr*. The user should ensure these are installed from CRAN prior to installing **parallelnh**.  
+<span style = "color:red"> <strong>NOTE:</strong></span> : **parallelnewhybrid** relies on functions from the R packages *parallel*, *plyr*, *stringr*, and *tidyr*. The user should ensure these are installed from CRAN prior to installing **parallelnh**.  
 
 ***  
 
@@ -34,14 +34,6 @@ The user can also specify the length of the MCMC burnin using the *burnin* and *
 **parallelnh_WIN** | Windows
 **parallelnh_LINUX** | Linux (Ubuntu)
 
-<h4 class="text-primary">nh_zcore.R</h4>
-The programme *NewHybrids* allows for individuals to be designated as belonging to a known genotype category to help build the allele frequencies for the various genotype classes. The function *nh_zcore* will insert a column of known genotype categories (which we call Zvec) into a *NewHybrids* formatted dataset, then output a *NewHybrids* format file, with a name indicating that the category vector has been added. Additionally, whether the known individuals should be included in the analysis, or used only to generate the genotype frequencies of the various gentype categories can also be specified by adding an 's' to the Zvec (i.e. z0s).   
-A single Zvec can be applied to all files in a folder in a batch fashion, or each file can be given a unique Zvec.  
-For information on the known genotype categories, refer to the *NewHybrids* documentation (Anderson 2003). The numbering in the Zvec should follow described in the *NewHybrids* documentation (e.g. Pure1 = z0, Pure2 = z1, F1 = z2 etc.).  
-
-<h4 class="text-primary">freqbasedsim.R</h4>
-This function generates simulated, centred Pure1, Pure2, F1, F2, BC1 and BC2 offspring based on the genotype frequencies of two ancestral populations provided in a *GENEPOP* [link](http://genepop.curtin.edu.au/) formatted file. The user can specify how many simulated files to create, how many individuals to simulate, and how many replicate files to create.  
-
 ***  
 
 ###How to use:  
@@ -52,7 +44,6 @@ Example datasets have been provided as R images (.rda files). These can be loade
 ------------|---------------------------------------------------------------  
 *PurePops* | A *GENEPOP* format file containing the genotypes at 240 SNP loci for 60 individuals in each of two ancestral populations (PopA and PopB). This is the data format for **freqbasedsim**, and as such the file can be entered into this function directly.  
 *SimPops\_S1R1_NH* | A *NewHybrids* format file. This file is the result of running **freqbasedsim** using the default parameters on the *PurePops* dataset. *SimPops\_S1R1_NH* can be analyzed using the function **parallelnh_xx**.  
-*Zed\_vec* | A two column dataset of Zeds to be inserted into the dataset *SimPops\_S1R1_NH* using the function **nh_zcore**  
 
 ***  
 <h4 class="text-primary">parallelnh_xx</h4>  
