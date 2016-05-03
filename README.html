@@ -142,50 +142,13 @@ $(document).ready(function () {
 
 <div id="parallelnewhybrid-is-an-r-package-designed-to-parallelize-newhybrids-analyses" class="section level3">
 <h3><strong><em>parallelnewhybrid</em></strong> is an R package designed to parallelize <em>NewHybrids</em> analyses</h3>
-</div>
-<div id="overview-of-functions" class="section level3">
-<h3>Overview of functions:</h3>
-<table style="width:124%;">
-<colgroup>
-<col width="18%"></col>
-<col width="105%"></col>
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left"><strong>Function name</strong></th>
-<th align="left"><strong>Main use</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><strong>parallelnh_xx.R</strong></td>
-<td align="left">Iteratively assigns <em>NewHybrids</em> analyses to the <em>c</em> available cores in a computer.</td>
-</tr>
-<tr class="even">
-<td align="left"><strong>nh_zcore.R</strong></td>
-<td align="left">Inserts genotype category assignments to <em>NewHybrids</em> format files (see Anderson 2002)</td>
-</tr>
-<tr class="odd">
-<td align="left"><strong>freqbasedsim.R</strong></td>
-<td align="left">Creates simulated hybrid datasets comprised of <em>two pure parental groups</em>, <em>F1</em>, <em>F2</em>, and <em>backcrosses to both parentals</em></td>
-</tr>
-<tr class="even">
-<td align="left"><strong>freqbasedsim_Advanced.R</strong></td>
-<td align="left">Creates simulated hybrid datasets comprised of <em>two pure parental groups</em>, <em>F1</em>, <em>F2</em>, and <em>backcrosses to both ancestral groups</em>. Allows the number of individuals of each genotype frequency category output to be specified by the user.</td>
-</tr>
-<tr class="odd">
-<td align="left"><strong>freqbasedsim_UB2.R</strong></td>
-<td align="left">Creates simulated hybrid datasets comprised of <em>two pure parental groups</em>, <em>F1</em>, <em>F2</em>, and <em>backcrosses to both ancestral groups</em>. A less biased version of the simulation function which allows the user to specify the proportion of individuals in each of the two ancestral populations to be used to generate the allele frequencies upon which to base the simulations. Also allows the number of individuals of each genotype frequency category output to be specified by the user.</td>
-</tr>
-</tbody>
-</table>
 <hr />
 </div>
 <div id="package-installation" class="section level3">
 <h3>Package Installation</h3>
-<p><strong>parallelenh</strong> can be installed from GitHub using the R package <em>devtools</em> and the function <em>install_github</em>:</p>
+<p><strong>parallelenewhybrid</strong> can be installed from GitHub using the R package <em>devtools</em> and the function <em>install_github</em>:</p>
 <pre><code>devtools::install_github(&quot;bwringe/parallelnewhybrid&quot;)</code></pre>
-<p><span style="color:red"> <strong>NOTE:</strong></span> : <strong>parallelnh</strong> relies on functions from the R packages <em>parallel</em>, <em>plyr</em>, <em>stringr</em>, and <em>tidyr</em>. The user should ensure these are installed from CRAN prior to installing <strong>parallelnh</strong>.</p>
+<p><span style="color:red"> <strong>NOTE:</strong></span> : <strong>parallelnewhybrid</strong> relies on functions from the R packages <em>parallel</em>, <em>plyr</em>, <em>stringr</em>, and <em>tidyr</em>. The user should ensure these are installed from CRAN prior to installing <strong>parallelnh</strong>.</p>
 <hr />
 </div>
 <div id="function-descriptions" class="section level3">
@@ -219,16 +182,6 @@ The user can also specify the length of the MCMC burnin using the <em>burnin</em
 </tr>
 </tbody>
 </table>
-<h4 class="text-primary">
-nh_zcore.R
-</h4>
-<p>The programme <em>NewHybrids</em> allows for individuals to be designated as belonging to a known genotype category to help build the allele frequencies for the various genotype classes. The function <em>nh_zcore</em> will insert a column of known genotype categories (which we call Zvec) into a <em>NewHybrids</em> formatted dataset, then output a <em>NewHybrids</em> format file, with a name indicating that the category vector has been added. Additionally, whether the known individuals should be included in the analysis, or used only to generate the genotype frequencies of the various gentype categories can also be specified by adding an ‘s’ to the Zvec (i.e. z0s).<br />
-A single Zvec can be applied to all files in a folder in a batch fashion, or each file can be given a unique Zvec.<br />
-For information on the known genotype categories, refer to the <em>NewHybrids</em> documentation (Anderson 2003). The numbering in the Zvec should follow described in the <em>NewHybrids</em> documentation (e.g. Pure1 = z0, Pure2 = z1, F1 = z2 etc.).</p>
-<h4 class="text-primary">
-freqbasedsim.R
-</h4>
-<p>This function generates simulated, centred Pure1, Pure2, F1, F2, BC1 and BC2 offspring based on the genotype frequencies of two ancestral populations provided in a <em>GENEPOP</em> <a href="http://genepop.curtin.edu.au/">link</a> formatted file. The user can specify how many simulated files to create, how many individuals to simulate, and how many replicate files to create.</p>
 <hr />
 </div>
 <div id="how-to-use" class="section level3">
@@ -255,10 +208,6 @@ freqbasedsim.R
 <tr class="even">
 <td align="left"><em>SimPops_S1R1_NH</em></td>
 <td align="left">A <em>NewHybrids</em> format file. This file is the result of running <strong>freqbasedsim</strong> using the default parameters on the <em>PurePops</em> dataset. <em>SimPops_S1R1_NH</em> can be analyzed using the function <strong>parallelnh_xx</strong>.</td>
-</tr>
-<tr class="odd">
-<td align="left"><em>Zed_vec</em></td>
-<td align="left">A two column dataset of Zeds to be inserted into the dataset <em>SimPops_S1R1_NH</em> using the function <strong>nh_zcore</strong></td>
 </tr>
 </tbody>
 </table>
@@ -316,7 +265,7 @@ parallelnh_xx
 <li>Any ideas on how to improve the functionality are very much appreciated.</li>
 <li><p>If you spot a typo, feel free to edit and send a pull request.</p></li>
 </ul>
-<p>To cite the current version of <strong>hybriddetective</strong>, please refer to our zenodo DOI:</p>
+<p>To cite the current version of <strong>parallelnewhybrid</strong>, please refer to our zenodo DOI:</p>
 <hr />
 <hr />
 </div>
