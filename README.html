@@ -202,12 +202,12 @@ The user can also specify the length of the MCMC burnin using the <em>burnin</em
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"><em>PurePops</em></td>
-<td align="left">A <em>GENEPOP</em> format file containing the genotypes at 240 SNP loci for 60 individuals in each of two ancestral populations (PopA and PopB). This is the data format for <strong>freqbasedsim</strong>, and as such the file can be entered into this function directly.</td>
+<td align="left"><em>SimPops_S1R1_NH</em></td>
+<td align="left">A <em>NewHybrids</em> format file. To analyze this file using the function <strong>parallelnh_xx</strong>, save it with the extension “.txt” to an empty folder on your hard drive, then provide <strong>parallelnh_xx</strong> with the file path to the folder. To run in parallel, after saving the file, copy it and give the copies unique names. <strong>parallelnh_xx</strong> will attempt to analyze all files which do not contain “individual.txt” within the file name, so it is essential that only NewHybrids formatted files, and their associated individual files be present in the folder provided to <strong>parallelnh_xx</strong>.</td>
 </tr>
 <tr class="even">
-<td align="left"><em>SimPops_S1R1_NH</em></td>
-<td align="left">A <em>NewHybrids</em> format file. This file is the result of running <strong>freqbasedsim</strong> using the default parameters on the <em>PurePops</em> dataset. <em>SimPops_S1R1_NH</em> can be analyzed using the function <strong>parallelnh_xx</strong>.</td>
+<td align="left"><em>SimPops_S1R1_NH_individuals</em></td>
+<td align="left">The individual file associated with <em>SimPops_S1R1_NH</em>. A single copy of this file should be saved to the same folder in which <em>SimPops_S1R1_NH</em> is saved. The filename of this file must end in “individuals.txt”.</td>
 </tr>
 </tbody>
 </table>
@@ -229,11 +229,11 @@ parallelnh_xx
 <tbody>
 <tr class="odd">
 <td align="left"><em>folder.data</em></td>
-<td align="left">A file path to the folder in which the <em>NewHybrids</em> formatted files to be analyzed reside.</td>
+<td align="left">A file path to the folder in which the <em>NewHybrids</em> formatted files to be analyzed , and their associated individual file reside.</td>
 </tr>
 <tr class="even">
 <td align="left"><em>where.NH</em></td>
-<td align="left">A file path to the <em>NewHybrids</em> installation folder</td>
+<td align="left">A file path to the <em>NewHybrids</em> installation folder. NOTE: The name of this folder must be “newhybrids”. If it is named anything else the function will fail.</td>
 </tr>
 <tr class="odd">
 <td align="left"><em>burnin</em></td>
@@ -250,6 +250,17 @@ parallelnh_xx
 ## the usage would be the same for the WIN and LINUX versions.</code></pre></div>
 <hr />
 </div>
+</div>
+<div id="important-notes" class="section level3">
+<h3>Important Notes:</h3>
+<ul>
+<li>The folder in which <em>NewHybrids</em> resides must be named “newhybrids”. If it is named anything else, the function will fail.<br />
+</li>
+<li>All file paths must end in “/”. If they do not, the function may fail. As well, it is preferable to place all folders such that the file path to them does not contain spaces.<br />
+</li>
+<li>The first time the function is run, it may trigger warnings from the operating system, this is normal. Further, the function may not work properly in newer versions of Windows unless R is run as Administrator.</li>
+</ul>
+<hr />
 </div>
 <div id="parallelnewhybrid-contributors" class="section level3">
 <h3><strong>parallelnewhybrid</strong> Contributors</h3>

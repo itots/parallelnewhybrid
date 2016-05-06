@@ -2,8 +2,8 @@
 #' @title Parallel NewHybrids - LINUX version
 #'
 #' @description \code{paralllelnh_OSX} is the LINUX (Ubuntu) version of the function thatallows NewHybrids (Anderson XXXX) to be run in parallel. It does so by creating a vector of file names to be run, that are held within a single folder. paralleleNH_LINUX then assigns a job to each of the cores available in the computer. As each task finishes, parallelnh_LINUX assigns a new analysis to the idle core.
-#' @param folder.data A file path to the folder in which the NewHybrids formatted files to be analyzed reside
-#' @param where.NH A file path to the NewHybrids installation folder
+#' @param folder.data A file path to the folder in which the NewHybrids formatted files to be analyzed, and their associated individual file, reside. Note the path provided must end in "/"
+#' @param where.NH A file path to the NewHybrids installation folder. Note this folder must be named "newhybrids", and the path provided must end in "/"
 #' @param burnin An integer specifying how many burnin steps NewHybrids is to run
 #' @param sweeps An integer specifying how many sweep steps NewHybrids is to run
 #' @export

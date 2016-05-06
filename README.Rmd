@@ -42,16 +42,16 @@ Example datasets have been provided as R images (.rda files). These can be loade
 
 **Example dataset** | **Contents**  
 ------------|---------------------------------------------------------------  
-*PurePops* | A *GENEPOP* format file containing the genotypes at 240 SNP loci for 60 individuals in each of two ancestral populations (PopA and PopB). This is the data format for **freqbasedsim**, and as such the file can be entered into this function directly.  
-*SimPops\_S1R1_NH* | A *NewHybrids* format file. This file is the result of running **freqbasedsim** using the default parameters on the *PurePops* dataset. *SimPops\_S1R1_NH* can be analyzed using the function **parallelnh_xx**.  
+*SimPops\_S1R1_NH* | A *NewHybrids* format file. To analyze this file using the function **parallelnh_xx**, save it with the extension ".txt" to an empty folder on your hard drive, then provide **parallelnh_xx** with the file path to the folder. To run in parallel, after saving the file, copy it and give the copies unique names. **parallelnh_xx** will attempt to analyze all files which do not contain "individual.txt" within the file name, so it is essential that only NewHybrids formatted files, and their associated individual files be present in the folder provided to **parallelnh_xx**.
+*SimPops\_S1R1_NH_individuals* | The individual file associated with *SimPops\_S1R1_NH*. A single copy of this file should be saved to the same folder in which *SimPops\_S1R1_NH* is saved. The filename of this file must end in "individuals.txt".
 
 ***  
 <h4 class="text-primary">parallelnh_xx</h4>  
 
 **Parameter** | **Description**
 ------------|---------------------------------------------------------------  
-*folder.data*| A file path to the folder in which the *NewHybrids* formatted files to be analyzed reside.   
-*where.NH* | A file path to the *NewHybrids* installation folder
+*folder.data*| A file path to the folder in which the *NewHybrids* formatted files to be analyzed, and their associated individual file reside.
+*where.NH* | A file path to the *NewHybrids* installation folder. NOTE: The name of this folder must be named "newhybrids". If it is named anything else the function will fail.
 *burnin* | An integer specifying how many burnin steps *NewHybrids* is to run
 *sweeps* | An integer specifying how many sweep steps *NewHybrids* is to run  
 
@@ -59,9 +59,23 @@ Example datasets have been provided as R images (.rda files). These can be loade
 ### Run analyses on all NewHybrids format files in the folder "your_data_to_analyze"
 parallelnh_OSX(folder.data = "~/ ... /your_data_to_analyze/", where.NH = "~/ ... /newhybrids/", burnin = 5000, sweeps = 10000)
 ## the usage would be the same for the WIN and LINUX versions.
+
+### ANALYSIS OF EXAMPLE DATA
+
+## To download the example file
+
+
 ```
 
 ***  
+
+### Important Notes:
+
+* The folder in which *NewHybrids* resides must be named "newhybrids". If it is named anything else, the function will fail.  
+* All file paths must end in "/". If they do not, the function may fail. As well, it is preferable to place all folders such that the file path to them does not contain spaces.  
+* The first time the function is run, it may trigger warnings from the operating system, this is normal. Further, the function may not work properly in newer versions of Windows unless R is run as Administrator.  
+
+***
 
 ### **parallelnewhybrid** Contributors
 

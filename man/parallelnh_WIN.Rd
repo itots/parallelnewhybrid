@@ -7,9 +7,9 @@
 parallelnh_WIN(folder.data, where.NH, burnin, sweeps)
 }
 \arguments{
-\item{folder.data}{A file path to the folder in which the NewHybrids formatted files to be analyzed reside}
+\item{folder.data}{A file path to the folder in which the NewHybrids formatted files to be analyzed, and their associated individual file, reside. Note the path provided must end in "/"}
 
-\item{where.NH}{A file path to the NewHybrids installation folder}
+\item{where.NH}{A file path to the NewHybrids installation folder. Note this folder must be named "newhybrids", and the path provided must end in "/"}
 
 \item{burnin}{An integer specifying how many burnin steps NewHybrids is to run}
 
