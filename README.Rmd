@@ -1,10 +1,4 @@
----
-title: "parallelnewhybrid"
-output:
-  html_document:
-    theme: yeti
-    highlight: tango
----
+# parallelnewhybrid 
 
 
 ### ***parallelnewhybrid*** is an R package designed to parallelize *NewHybrids* analyses
