@@ -1,5 +1,6 @@
 # parallelnewhybrid 
 
+[![DOI](https://zenodo.org/badge/21962/bwringe/parallelnewhybrid.svg)](https://zenodo.org/badge/latestdoi/21962/bwringe/parallelnewhybrid)
 
 ### ***parallelnewhybrid*** is an R package designed to parallelize *NewHybrids* analyses
 
@@ -121,7 +122,7 @@ unlink(paste0(path.hold, "/parallelnewhybrids example/"), recursive = TRUE)
 * Any ideas on how to improve the functionality are very much appreciated.
 * If you spot a typo, feel free to edit and send a pull request.  
 
-To cite the current version of **parallelnewhybrid**, please refer to our zenodo DOI: 
+To cite the current version of **parallelnewhybrid**, please refer to our zenodo DOI: [![DOI](https://zenodo.org/badge/21962/bwringe/parallelnewhybrid.svg)](https://zenodo.org/badge/latestdoi/21962/bwringe/parallelnewhybrid)
 
 ***
 ***

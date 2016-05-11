@@ -113,6 +113,7 @@ $(document).ready(function () {
 
 <div id="parallelnewhybrid" class="section level1">
 <h1>parallelnewhybrid</h1>
+<p><a href="https://zenodo.org/badge/latestdoi/21962/bwringe/parallelnewhybrid"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzAiIGhlaWdodD0iMjAiPjxsaW5lYXJHcmFkaWVudCBpZD0iYiIgeDI9IjAiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNiYmIiIHN0b3Atb3BhY2l0eT0iLjEiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3Atb3BhY2l0eT0iLjEiLz48L2xpbmVhckdyYWRpZW50PjxtYXNrIGlkPSJhIj48cmVjdCB3aWR0aD0iMTcwIiBoZWlnaHQ9IjIwIiByeD0iMyIgZmlsbD0iI2ZmZiIvPjwvbWFzaz48ZyBtYXNrPSJ1cmwoI2EpIj48cGF0aCBmaWxsPSIjNTU1IiBkPSJNMCAwaDMxdjIwSDB6Ii8+PHBhdGggZmlsbD0iIzAwN2VjNiIgZD0iTTMxIDBoMTM5djIwSDMxeiIvPjxwYXRoIGZpbGw9InVybCgjYikiIGQ9Ik0wIDBoMTcwdjIwSDB6Ii8+PC9nPjxnIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJEZWphVnUgU2FucyxWZXJkYW5hLEdlbmV2YSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIj48dGV4dCB4PSIxNS41IiB5PSIxNSIgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyI+RE9JPC90ZXh0Pjx0ZXh0IHg9IjE1LjUiIHk9IjE0Ij5ET0k8L3RleHQ+PHRleHQgeD0iOTkuNSIgeT0iMTUiIGZpbGw9IiMwMTAxMDEiIGZpbGwtb3BhY2l0eT0iLjMiPjEwLjUyODEvemVub2RvLjUxMjgxPC90ZXh0Pjx0ZXh0IHg9Ijk5LjUiIHk9IjE0Ij4xMC41MjgxL3plbm9kby41MTI4MTwvdGV4dD48L2c+PC9zdmc+" alt="DOI" /></a></p>
 <div id="parallelnewhybrid-is-an-r-package-designed-to-parallelize-newhybrids-analyses" class="section level3">
 <h3><strong><em>parallelnewhybrid</em></strong> is an R package designed to parallelize <em>NewHybrids</em> analyses</h3>
 <hr />
@@ -121,7 +122,7 @@ $(document).ready(function () {
 <h3>Package Installation</h3>
 <p><strong>parallelenewhybrid</strong> can be installed from GitHub using the R package <em>devtools</em> and the function <em>install_github</em>:</p>
 <pre><code>devtools::install_github(&quot;bwringe/parallelnewhybrid&quot;)</code></pre>
-<p><span style="color:red"> <strong>NOTE:</strong></span> : <strong>parallelnewhybrid</strong> relies on functions from the R packages <em>parallel</em>, <em>plyr</em>, <em>stringr</em>, and <em>tidyr</em>. The user should ensure these are installed from CRAN prior to installing <strong>parallelnh</strong>.</p>
+<p><span style="color:red"> <strong>NOTE:</strong></span> : <strong>parallelnewhybrid</strong> relies on functions from the R packages <em>parallel</em>, <em>plyr</em>, <em>stringr</em>, and <em>tidyr</em>. The user should ensure these are installed from CRAN prior to installing <strong>parallelnewhybrid</strong>.</p>
 <hr />
 </div>
 <div id="function-descriptions" class="section level3">
@@ -129,10 +130,10 @@ $(document).ready(function () {
 <h4 class="text-primary">
 parallelnh_xx.R
 </h4>
-<p>Allows <em>NewHybrids</em> (Anderson and Thompson 2002) to be run in parallel. A job (<em>NewHybrids</em> analysis) is assigned to each of the <em>c</em> cores available in the computer. As each task finishes, a new analysis is asigned to the idled core.<br />
-All <em>NewHybrids</em> format files in the folder the user specifies as <em>folder.data</em> will be analyzed.<br />
-The user can also specify the length of the MCMC burnin using the <em>burnin</em> and <em>sweeps</em> parameters.<br />
-<span style="color:red"> <strong>NOTE:</strong></span> : There are <strong>three operating system-specific versions</strong> of the <strong>parallelnh_xx</strong> function because of the different ways in which the operating systems handle forking of processes.</p>
+<p>Allows <em>NewHybrids</em> (Anderson and Thompson 2002) to be run in parallel. A job (<em>NewHybrids</em> analysis) is assigned to each of the <em>c</em> cores available in the computer. As each task finishes, a new analysis is assigned to the idled core.<br />
+<strong>parallelnewhybrid</strong> will attempt to analyze all <em>NewHybrids</em> format files in the folder specified by the user through the <em>folder.data</em> argument. Therefore, it is essential this folder contain only the files the user wishes to analyze, and optionally their associated individual file(s).<br />
+The user can must also specify the length of the Markov chain Monte Carlo (MCMC) burn-in and subsequent run length using the <em>burnin</em> and <em>sweeps</em> parameters.<br />
+<span style="color:red"> <strong>NOTE:</strong></span> There are <strong>three operating system-specific versions</strong> of the <strong>parallelnh_xx</strong> function because of the different ways in which the operating systems handle forking of processes.</p>
 <table>
 <thead>
 <tr class="header">
@@ -176,11 +177,11 @@ The user can also specify the length of the MCMC burnin using the <em>burnin</em
 <tbody>
 <tr class="odd">
 <td align="left"><em>SimPops_S1R1_NH</em></td>
-<td align="left">A <em>NewHybrids</em> format file. To analyze this file using the function <strong>parallelnh_xx</strong>, save it with the extension “.txt” to an empty folder on your hard drive, then provide <strong>parallelnh_xx</strong> with the file path to the folder. To run in parallel, after saving the file, copy it and give the copies unique names. <strong>parallelnh_xx</strong> will attempt to analyze all files which do not contain “individual.txt” within the file name, so it is essential that only NewHybrids formatted files, and their associated individual files be present in the folder provided to <strong>parallelnh_xx</strong>.</td>
+<td align="left">A <em>NewHybrids</em> format file. To analyze this file using the function <strong>parallelnh_xx</strong>, save it with the extension “.txt” to an empty folder on your hard drive, then provide <strong>parallelnh_xx</strong> with the file path to the folder. To run in parallel, after saving the file, copy it and give the copies unique names. <strong>parallelnh_xx</strong> will attempt to analyze all files which do not contain “individual.txt” within the file name, so it is essential that only <em>NewHybrids</em> formatted files, and their associated individual files be present in the folder provided to <strong>parallelnh_xx</strong>.</td>
 </tr>
 <tr class="even">
 <td align="left"><em>SimPops_S1R1_NH_individuals</em></td>
-<td align="left">The individual file associated with <em>SimPops_S1R1_NH</em>. A single copy of this file should be saved to the same folder in which <em>SimPops_S1R1_NH</em> is saved. The filename of this file must end in “individuals.txt”.</td>
+<td align="left">The individual file associated with <em>SimPops_S1R1_NH</em>. A single copy of this file should be saved to the same folder in which <em>SimPops_S1R1_NH</em> is saved. The filename must end in “individuals.txt”.</td>
 </tr>
 </tbody>
 </table>
@@ -210,7 +211,7 @@ parallelnh_xx
 </tr>
 <tr class="odd">
 <td align="left"><em>burnin</em></td>
-<td align="left">An integer specifying how many burnin steps <em>NewHybrids</em> is to run</td>
+<td align="left">An integer specifying how many burn-in steps <em>NewHybrids</em> is to run</td>
 </tr>
 <tr class="even">
 <td align="left"><em>sweeps</em></td>
@@ -218,54 +219,51 @@ parallelnh_xx
 </tr>
 </tbody>
 </table>
-<pre class="r"><code>### Run analyses on all NewHybrids format files in the folder &quot;your_data_to_analyze&quot;
-parallelnh_OSX(folder.data = &quot;~/ ... /your_data_to_analyze/&quot;, where.NH = &quot;~/ ... /newhybrids/&quot;, burnin = 5000, sweeps = 10000)
-## the usage would be the same for the WIN and LINUX versions.
-
+<pre class="r"><code>
 ### ANALYSIS OF EXAMPLE DATA
 
 ## Get the file path to the working directory, will be used to allow a universal example
 path.hold &lt;- getwd()
 
-## get the individual file included along with the parallelnewhybrid package and make it an object
+## Get the individual file included along with the parallelnewhybrid package and make it an object
 sim_inds &lt;- parallelnewhybrid::SimPops_S1R1_NH_individuals
 
-## get the genotype data file included along with the parallelnewhybrid package and make it an object
+## Get the genotype data file included along with the parallelnewhybrid package and make it an object
 sim_data &lt;- parallelnewhybrid::SimPops_S1R1_NH
 
-## save the individual data to the working directory as a file called &quot;SimPops_S1R1_NH_individuals.txt&quot;
+## Gave the individual data to the working directory as a file called &quot;SimPops_S1R1_NH_individuals.txt&quot;
 write.table(x = sim_inds, file = paste0(path.hold, &quot;/SimPops_S1R1_NH_individuals.txt&quot;), row.names = FALSE, col.names = FALSE, quote = FALSE)
 
-## save the genotype data to the working directory as a file called &quot;SimPops_S1R1_NH.txt&quot;
+## Save the genotype data to the working directory as a file called &quot;SimPops_S1R1_NH.txt&quot;
 write.table(x = sim_data, file = paste0(path.hold, &quot;/SimPops_S1R1_NH.txt&quot;), row.names = FALSE, col.names = FALSE, quote = FALSE)
 
-## create an empty folder within the working directory. Recall, parallelnewhybrids will analyze all files within the folder it is specified, but if there are files that are not NewHybrids format, or individual files, it will fail.
+## Create an empty folder within the working directory. Recall, parallelnewhybrids will analyze all files within the folder it is specified, but if there are files that are not NewHybrids format, or individual files, it will fail.
 dir.create(paste0(path.hold, &quot;/parallelnewhybrids example&quot;))
 
-## copy the individual file to the new folder
+## Copy the individual file to the new folder
 file.copy(from = paste0(path.hold, &quot;/SimPops_S1R1_NH_individuals.txt&quot;), to = paste0(path.hold, &quot;/parallelnewhybrids example&quot;))
 
-## copy the genotype data file to the new folder
+## Copy the genotype data file to the new folder
 file.copy(from = paste0(path.hold, &quot;/SimPops_S1R1_NH.txt&quot;), to = paste0(path.hold, &quot;/parallelnewhybrids example&quot;))
 
-## create two copies of the genotype data file to act as technical replicates of the NewHybrids simulation based analysis. This will also serve demonstrate the parallel capabilities of parallelnewhybrid.
+## Create two copies of the genotype data file to act as technical replicates of the NewHybrids simulation based analysis. This will also serve demonstrate the parallel capabilities of parallelnewhybrid.
 file.copy(from = paste0(path.hold, &quot;/parallelnewhybrids example/SimPops_S1R1_NH.txt&quot;), to = paste0(path.hold, &quot;/parallelnewhybrids example/SimPops_S1R2_NH.txt&quot;))
 
 file.copy(from = paste0(path.hold, &quot;/parallelnewhybrids example/SimPops_S1R1_NH.txt&quot;), to = paste0(path.hold, &quot;/parallelnewhybrids example/SimPops_S2R3_NH.txt&quot;))
 
-## clean up the working directory by deleting the two files
+## Clean up the working directory by deleting the two files
 file.remove(paste0(path.hold, &quot;/SimPops_S1R1_NH_individuals.txt&quot;))
 
 file.remove(paste0(path.hold, &quot;/SimPops_S1R1_NH.txt&quot;))
 
-## create an object that is the file path to the folder in which NewHybrids is installed. Note: this folder must be named &quot;newhybrids&quot;
+## Create an object that is the file path to the folder in which NewHybrids is installed. Note: this folder must be named &quot;newhybrids&quot;
 your.NH &lt;- &quot;YOUR PATH/newhybrids/&quot;
 
-## execute parallelnh. NOTE: &quot;xx&quot; must be replaced by the correct designation for your operating system. burnin and sweep values have been chosen for demonstration only.
+## Execute parallelnh. NOTE: &quot;xx&quot; must be replaced by the correct designation for your operating system. burnin and sweep values have been chosen for demonstration only.
 parallelnh_xx(folder.data = paste0(path.hold, &quot;/parallelnewhybrids example/&quot;), where.NH = your.NH, burnin = 100, sweeps = 100)
 
 
-## clean up everything by deleting the example folder. Note: comment characters have been added to prevent this command being run accidently.
+## Clean up everything by deleting the example folder. Note: comment characters have been added to prevent this command being run accidently.
 unlink(paste0(path.hold, &quot;/parallelnewhybrids example/&quot;), recursive = TRUE)
 
 </code></pre>
@@ -297,7 +295,7 @@ unlink(paste0(path.hold, &quot;/parallelnewhybrids example/&quot;), recursive = 
 <li>Any ideas on how to improve the functionality are very much appreciated.</li>
 <li><p>If you spot a typo, feel free to edit and send a pull request.</p></li>
 </ul>
-<p>To cite the current version of <strong>parallelnewhybrid</strong>, please refer to our zenodo DOI:</p>
+<p>To cite the current version of <strong>parallelnewhybrid</strong>, please refer to our zenodo DOI: <a href="https://zenodo.org/badge/latestdoi/21962/bwringe/parallelnewhybrid"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzAiIGhlaWdodD0iMjAiPjxsaW5lYXJHcmFkaWVudCBpZD0iYiIgeDI9IjAiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNiYmIiIHN0b3Atb3BhY2l0eT0iLjEiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3Atb3BhY2l0eT0iLjEiLz48L2xpbmVhckdyYWRpZW50PjxtYXNrIGlkPSJhIj48cmVjdCB3aWR0aD0iMTcwIiBoZWlnaHQ9IjIwIiByeD0iMyIgZmlsbD0iI2ZmZiIvPjwvbWFzaz48ZyBtYXNrPSJ1cmwoI2EpIj48cGF0aCBmaWxsPSIjNTU1IiBkPSJNMCAwaDMxdjIwSDB6Ii8+PHBhdGggZmlsbD0iIzAwN2VjNiIgZD0iTTMxIDBoMTM5djIwSDMxeiIvPjxwYXRoIGZpbGw9InVybCgjYikiIGQ9Ik0wIDBoMTcwdjIwSDB6Ii8+PC9nPjxnIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJEZWphVnUgU2FucyxWZXJkYW5hLEdlbmV2YSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIj48dGV4dCB4PSIxNS41IiB5PSIxNSIgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyI+RE9JPC90ZXh0Pjx0ZXh0IHg9IjE1LjUiIHk9IjE0Ij5ET0k8L3RleHQ+PHRleHQgeD0iOTkuNSIgeT0iMTUiIGZpbGw9IiMwMTAxMDEiIGZpbGwtb3BhY2l0eT0iLjMiPjEwLjUyODEvemVub2RvLjUxMjgxPC90ZXh0Pjx0ZXh0IHg9Ijk5LjUiIHk9IjE0Ij4xMC41MjgxL3plbm9kby41MTI4MTwvdGV4dD48L2c+PC9zdmc+" alt="DOI" /></a></p>
 <hr />
 <hr />
 </div>
