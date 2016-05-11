@@ -18,6 +18,5 @@ Depends:
 Imports:
     parallel,
     plyr,
-    reshape2,
     stringr
 RoxygenNote: 5.0.1
