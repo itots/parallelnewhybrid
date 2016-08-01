@@ -1,5 +1,5 @@
 # parallelnewhybrid 
-
+[![Travis-CI Build Status](https://travis-ci.org/thierrygosselin/parallelnewhybrid.svg?branch=master)](https://travis-ci.org/thierrygosselin/parallelnewhybrid)
 [![DOI](https://zenodo.org/badge/21962/bwringe/parallelnewhybrid.svg)](https://zenodo.org/badge/latestdoi/21962/bwringe/parallelnewhybrid)
 
 ### ***parallelnewhybrid*** is an R package designed to parallelize *NewHybrids* analyses
