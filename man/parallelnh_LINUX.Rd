@@ -16,6 +16,15 @@ parallelnh_LINUX(folder.data, where.NH, burnin, sweeps)
 \item{sweeps}{An integer specifying how many sweep steps NewHybrids is to run}
 }
 \description{
-\code{paralllelnh_OSX} is the LINUX (Ubuntu) version of the function thatallows NewHybrids (Anderson XXXX) to be run in parallel. It does so by creating a vector of file names to be run, that are held within a single folder. paralleleNH_LINUX then assigns a job to each of the cores available in the computer. As each task finishes, parallelnh_LINUX assigns a new analysis to the idle core.
+\code{paralllelnh_OSX} is the LINUX (Ubuntu) version of the function thatallows NewHybrids (Anderson and Thompson 2002) to be run in parallel. It does so by creating a vector of file names to be run, that are held within a single folder. paralleleNH_LINUX then assigns a job to each of the cores available in the computer. As each task finishes, parallelnh_LINUX assigns a new analysis to the idle core.
+}
+\author{
+Brendan Wringe \email{bwringe@gmail.com}
+}
+\references{
+Anderson EC, Thompson EA. A model-based method for identifying
+species hybrids using multilocus genetic data.
+Genetics. Genetics Society of America;
+2002;160: 1217-1229.
 }
 

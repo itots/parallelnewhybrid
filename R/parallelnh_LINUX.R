@@ -1,7 +1,7 @@
 #' @name parallelnh_LINUX
 #' @title Parallel NewHybrids - LINUX version
 #'
-#' @description \code{paralllelnh_OSX} is the LINUX (Ubuntu) version of the function thatallows NewHybrids (Anderson XXXX) to be run in parallel. It does so by creating a vector of file names to be run, that are held within a single folder. paralleleNH_LINUX then assigns a job to each of the cores available in the computer. As each task finishes, parallelnh_LINUX assigns a new analysis to the idle core.
+#' @description \code{paralllelnh_OSX} is the LINUX (Ubuntu) version of the function thatallows NewHybrids (Anderson and Thompson 2002) to be run in parallel. It does so by creating a vector of file names to be run, that are held within a single folder. paralleleNH_LINUX then assigns a job to each of the cores available in the computer. As each task finishes, parallelnh_LINUX assigns a new analysis to the idle core.
 #' @param folder.data A file path to the folder in which the NewHybrids formatted files to be analyzed, and their associated individual file, reside. Note the path provided must end in "/"
 #' @param where.NH A file path to the NewHybrids installation folder. Note this folder must be named "newhybrids", and the path provided must end in "/"
 #' @param burnin An integer specifying how many burnin steps NewHybrids is to run
@@ -10,6 +10,11 @@
 #' @import parallel
 #' @import plyr
 #' @import stringr
+#' @references Anderson EC, Thompson EA. A model-based method for identifying
+#' species hybrids using multilocus genetic data.
+#' Genetics. Genetics Society of America;
+#' 2002;160: 1217-1229.
+#' @author Brendan Wringe \email{bwringe@@gmail.com}
 
 
 parallelnh_LINUX <- function(folder.data, where.NH, burnin, sweeps){
