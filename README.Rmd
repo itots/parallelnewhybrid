@@ -12,7 +12,7 @@
 ```
 devtools::install_github("bwringe/parallelnewhybrid")
 ```
-<span style = "color:red"> <strong>NOTE:</strong></span> : **parallelnewhybrid** relies on functions from the R packages *parallel*, *plyr*, *stringr*, and *tidyr*. The user should ensure these are installed from CRAN prior to installing **parallelnewhybrid**.  
+<span style = "color:red"> <strong>NOTE:</strong></span> : **parallelnewhybrid** relies on functions from the R packages *parallel*, *plyr*, *stringdist*, *stringr*, and *tidyr*. The user should ensure these are installed from CRAN prior to installing **parallelnewhybrid**.  
 
 ***  
 
