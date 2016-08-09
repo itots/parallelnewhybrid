@@ -22,14 +22,24 @@ parallelnh_OSX <- function(folder.data, where.NH, burnin, sweeps){
   files.anal <- list.files(path = folder.data)
 
   path.indiv.file <- NULL
-  indiv.file.exists <- grep(pattern = "individuals.txt", x = files.anal)
+  indiv.file.exists <- any(files.anal == "individuals.txt")  # can't use file.exists because of case-insensitivity on some file systems
 
-    if(indiv.file.exists > 0){
-      path.indiv.file <- paste0(folder.data, files.anal[indiv.file.exists])
-      files.anal <- files.anal[-indiv.file.exists]
+    if(indiv.file.exists == TRUE) {
+      path.indiv.file <- file.path(folder.data, "individuals.txt")
+      files.anal <- files.anal[files.anal != "individuals.txt"]
     }
-    if(indiv.file.exists == 0){
-      writeLines("Note: An individual file has not been provided. Please refer to the help file for more information")
+    if(indiv.file.exists == FALSE) {
+      message("Analysis with parallelnewybrid requires the presence of a file \"individuals.txt\".")
+      message("The name of the file must be exactly \"individuals.txt\" (without the quotes, of course).")
+
+      close_matches <- files.anal[as.logical(stringdist::amatch(files.anal, table = "individuals.txt", maxDist = 5))]
+      close_matches <- close_matches[!is.na(close_matches)]
+
+      if(length(close_matches) > 0) {
+        message("I've found the following file(s) that might be intended to be \"individuals.txt\" but may")
+        message("contain mispellings: ", paste(close_matches, collaspse = " "))
+      }
+      stop("Note: An individual file has not been provided. Please refer to the help file for more information")
     }
 
     dir.create(path = paste0(folder.data, "NH.Temp"))
