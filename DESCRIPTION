@@ -19,6 +19,7 @@ Depends:
 Imports:
     parallel,
     plyr,
+    stringdist,
     stringr
 Suggests:
     knitr,

@@ -12,13 +12,11 @@
 ```
 devtools::install_github("bwringe/parallelnewhybrid")
 ```
-<span style = "color:red"> <strong>NOTE:</strong></span> : **parallelnewhybrid** relies on functions from the R packages *parallel*, *plyr*, *stringr*, and *tidyr*. The user should ensure these are installed from CRAN prior to installing **parallelnewhybrid**.
+<span style = "color:red"> <strong>NOTE:</strong></span> : **parallelnewhybrid** relies on functions from the R packages *parallel*, *plyr*, *stringdist*, *stringr*, and *tidyr*. The user should ensure these are installed from CRAN prior to installing **parallelnewhybrid**.
 ```
 if (!require("pacman")) install.packages("pacman")
 pacman::p_load(parallel, plyr, stringr, tidyr)
 ```
-
-***  
 
 ###Function descriptions
 <h4 class="text-primary">parallelnh_xx.R</h4>
@@ -41,7 +39,7 @@ Example datasets have been provided as R images (.rda files). These can be loade
 
 **Example dataset** | **Contents**  
 ------------|---------------------------------------------------------------  
-*SimPops\_S1R1_NH* | A *NewHybrids* format file. To analyze this file using the function **parallelnh_xx**, save it with the extension ".txt" to an empty folder on your hard drive, then provide **parallelnh_xx** with the file path to the folder. To run in parallel, after saving the file, copy it and give the copies unique names. **parallelnh_xx** will attempt to analyze all files which do not contain "individual.txt" within the file name, so it is essential that only *NewHybrids* formatted files, and their associated individual files be present in the folder provided to **parallelnh_xx**.
+*SimPops\_S1R1_NH* | A *NewHybrids* format file. To analyze this file using the function **parallelnh_xx**, save it with the extension ".txt" to an empty folder on your hard drive, then provide **parallelnh_xx** with the file path to the folder. To run in parallel, after saving the file, copy it and give the copies unique names. **parallelnh_xx** will attempt to analyze all files which do not contain "individuals.txt" within the file name, so it is essential that only *NewHybrids* formatted files, and their associated individual files be present in the folder provided to **parallelnh_xx**.
 *SimPops\_S1R1_NH_individuals* | The individual file associated with *SimPops\_S1R1_NH*. A single copy of this file should be saved to the same folder in which *SimPops\_S1R1_NH* is saved. The filename must end in "individuals.txt".
 
 ***  
