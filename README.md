@@ -1,5 +1,6 @@
 # parallelnewhybrid 
 [![Travis-CI Build Status](https://travis-ci.org/thierrygosselin/parallelnewhybrid.svg?branch=master)](https://travis-ci.org/thierrygosselin/parallelnewhybrid)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/bwringe/parallelnewhybrid?branch=master&svg=true)](https://ci.appveyor.com/project/bwringe/parallelnewhybrid)
 [![DOI](https://zenodo.org/badge/21962/bwringe/parallelnewhybrid.svg)](https://zenodo.org/badge/latestdoi/21962/bwringe/parallelnewhybrid)
 
 ### ***parallelnewhybrid*** is an R package designed to parallelize *NewHybrids* analyses
