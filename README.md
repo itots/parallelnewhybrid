@@ -1,5 +1,5 @@
 # parallelnewhybrid 
-
+[![Travis-CI Build Status](https://travis-ci.org/thierrygosselin/parallelnewhybrid.svg?branch=master)](https://travis-ci.org/thierrygosselin/parallelnewhybrid)
 [![DOI](https://zenodo.org/badge/21962/bwringe/parallelnewhybrid.svg)](https://zenodo.org/badge/latestdoi/21962/bwringe/parallelnewhybrid)
 
 ### ***parallelnewhybrid*** is an R package designed to parallelize *NewHybrids* analyses
@@ -12,9 +12,11 @@
 ```
 devtools::install_github("bwringe/parallelnewhybrid")
 ```
-<span style = "color:red"> <strong>NOTE:</strong></span> : **parallelnewhybrid** relies on functions from the R packages *parallel*, *plyr*, *stringdist*, *stringr*, and *tidyr*. The user should ensure these are installed from CRAN prior to installing **parallelnewhybrid**.  
-
-***  
+<span style = "color:red"> <strong>NOTE:</strong></span> : **parallelnewhybrid** relies on functions from the R packages *parallel*, *plyr*, *stringdist*, *stringr*, and *tidyr*. The user should ensure these are installed from CRAN prior to installing **parallelnewhybrid**.
+```
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(parallel, plyr, stringr, tidyr)
+```
 
 ###Function descriptions
 <h4 class="text-primary">parallelnh_xx.R</h4>
@@ -121,6 +123,13 @@ unlink(paste0(path.hold, "/parallelnewhybrids example/"), recursive = TRUE)
 * If you don't understand anything, please contact me (bwringe[at]gmail.com)
 * Any ideas on how to improve the functionality are very much appreciated.
 * If you spot a typo, feel free to edit and send a pull request.  
+
+**Reference**
+Anderson EC, Thompson EA. A model-based method for identifying
+species hybrids using multilocus genetic data.
+Genetics. Genetics Society of America;
+2002;160: 1217-1229.
+
 
 To cite the current version of **parallelnewhybrid**, please refer to our zenodo DOI: [![DOI](https://zenodo.org/badge/21962/bwringe/parallelnewhybrid.svg)](https://zenodo.org/badge/latestdoi/21962/bwringe/parallelnewhybrid)
 

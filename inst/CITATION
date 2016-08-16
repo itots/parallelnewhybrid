@@ -1,0 +1,11 @@
+citHeader("To cite parallelnewhybrid in publications use:")
+
+citEntry(
+entry="Manual",
+title = "parallelnewhybrid: an R package for the parallelization of hybrid detection using NEWHYBRIDS",
+year = "2016",
+author = personList(as.person("Brendan Wringe"), as.person("Ryan Stanley"), as.person("Nicholas Jeffery"), as.person("Eric Anderson"), as.person("Ian Bradbury")),
+url = "https://github.com/bwringe/parallelnewhybrid",
+doi = "complete",
+textVersion = paste("Brendan Wringe, Ryan Stanley, Nicholas Jeffery, Eric Anderson, Ian Bradbury, (2016). parallelnewhybrid: an R package for the parallelization of hybrid detection using NEWHYBRIDS. R package version 0.0.0.9002. https://github.com/bwringe/parallelnewhybrid. doi : to_complete")
+)
