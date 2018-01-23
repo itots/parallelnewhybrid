@@ -7,6 +7,8 @@
 
 
 ***  
+Please ensure that you have the correct version of **NewHybrids** installed. The source code and instructions for installation can be found at (<https://github.com/eriqande/newhybrids>)
+
 
 ###Package Installation
 **parallelenewhybrid** can be installed from GitHub using the R package *devtools* and the function *install_github*:  
