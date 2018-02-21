@@ -38,7 +38,7 @@ The user can must also specify the length of the Markov chain Monte Carlo (MCMC)
 
 ###How to use:  
 ####Example datasets:  
-Example datasets have been provided as R images (.rda files). These can be loaded into your workspace using the ``data()`` function  
+Example datasets have been provided as R images (.rda files). These can be loaded into your workspace using the ``data()`` function.
 
 **Example dataset** | **Contents**  
 ------------|---------------------------------------------------------------  
