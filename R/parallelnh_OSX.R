@@ -16,7 +16,7 @@
 #' 2002;160: 1217-1229.
 #' @author Brendan Wringe \email{bwringe@@gmail.com}
 
-parallelnh_OSX <- function(folder.data, where.NH, burnin, sweeps){
+parallelnh_OSX <- function(folder.data, where.NH, burnin, sweeps, seed=NULL){
 
   useroptions <- options()
 
@@ -89,23 +89,33 @@ parallelnh_OSX <- function(folder.data, where.NH, burnin, sweeps){
 
     ## now to execute the command
 
-    ## add in randomized seeds - the NH guide says they should be small.
-
-    r.seed <- sample(x = c(1:10), size = 2)
-
-    do.seed <- c("--seeds", r.seed)
     burnin.do <- paste("--burn-in", burnin, sep=" ")
     sweeps.do <- paste("--num-sweeps", sweeps, sep=" ")
     ## replace with files.anal
     where.temp2 <- gsub(x = where.temp, pattern = " ", replacement = "\\ ", fixed = T)
     jobs.vector <- NULL
 
+    # Set seed for reproducibility
+    set.seed(seed)
+
     for(b in 1:length(NH.copy.list)){
+
+        ## add in randomized seeds - the NH guide says they should be small.
+
+        r.seed <- sample(x = c(1:10), size = 2)
+
+        do.seed <- paste(c("--seeds", r.seed), collapse = " ")
 
         b.copy <- NH.copy.list[b]
         file.do <- paste("-d", files.anal[b])
         what.temp <- paste0(where.temp2, b.copy)
-        path.hold <- paste("cd", paste0(what.temp, ";"), "newhybsng", file.do, burnin.do, sweeps.do, "--no-gui", sep = " ")
+
+        if(is.null(seed)){
+          path.hold <- paste("cd", paste0(what.temp, ";"), "newhybsng", file.do, burnin.do, sweeps.do, "--no-gui", sep = " ")
+        }else{
+          path.hold <- paste("cd", paste0(what.temp, ";"), "newhybsng", file.do, burnin.do, sweeps.do, do.seed, "--no-gui", sep = " ")
+        }
+
         jobs.vector <- c(jobs.vector, path.hold)
 
     }
